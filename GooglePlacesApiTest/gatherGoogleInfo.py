@@ -8,7 +8,7 @@ types =["bar","night_club"]
 def build_place_id_list(file_name):
 	locations = ["40.7233,-74.0030","40.7549,-73.9840","40.7675,-73.9758","40.6959,-73.9956","40.7265,-73.9815","40.7150,-73.9843","40.7118,-74.0131","40.7336,-74.0027","40.7396,-74.0089","40.7501,-74.0028","40.7629,-73.9714"]
 	locations += ["40.7813,-73.9740","40.8075,-73.9626","40.7662,-73.9602","40.7081,-73.9571","40.6734,-74.0083","40.7213,-73.9884","40.7460,-73.9776","40.7423,-73.9801"]
-	radius = "2000"
+	radius = "10000"
 
 	place_ids = set()
 
@@ -52,7 +52,7 @@ def open_place_id_list(file_name):
 
 def call_place_details(place_id):
 	fields = "name,url,price_level,user_ratings_total,rating,review/text,geometry/location,formatted_address," + \
-		"formatted_phone_number,types"
+		"formatted_phone_number,types,opening_hours"
 	r = requests.get(placeDetailsUrl+"key="+api_key+"&place_id="+place_id+"&fields="+fields)
 	return r.json()["result"]
 
