@@ -27,7 +27,7 @@
                 <label for = price> Input a maximum price level from 1 to 5: </label>
                 <input type="number" name="price" class="form-control" placeholder="Price" min = 1 max = 5>
                 </br><br>
-                <p> Prefences: </p>
+                <label> Prefences: </label>
                 <label for = attribute1> Dancing: </label>
                 <input type="checkbox" name="attribute1"  value ="dancing">
                 <label for = attribute2> Touristy: </label>
@@ -40,11 +40,15 @@
             </br><br>
                 <label for = search> Additional preferneces: </label>
                 <input id="input" type="text" name="search" class="form-control" placeholder="Your Input">
-                
+                <br><br>
+
+                <label for = search> Or search similar bars to one you already love: </label>
+                <input id="input" type="text" name="bar_name" class="form-control" placeholder="Bar Name">
+
                 
             </div>
             <br><br>
-            <button type="submit" class="btn btn-info"> Go! </button>
+            <button type="submit" class="btn btn-info"> Lets Ride! </button>
         </form>
         <form class="form-inline global-search">
         {% if data %}
