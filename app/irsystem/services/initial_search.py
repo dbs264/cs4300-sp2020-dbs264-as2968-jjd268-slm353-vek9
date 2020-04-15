@@ -6,6 +6,7 @@ data_path = config.basedir+"/data/"
 
 
 def load_details(city):
+	city = city.lower().replace(" ", "_")
 	with open(data_path+city+"_details.json") as f:
 		return json.load(f)
 
