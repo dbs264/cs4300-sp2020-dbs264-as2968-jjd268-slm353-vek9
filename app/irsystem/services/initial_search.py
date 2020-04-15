@@ -1,5 +1,4 @@
-import config
-import json
+import config, random, json
 from pathlib import Path
 
 data_path = config.basedir+"/data/"
@@ -12,5 +11,5 @@ def load_details(city):
 
 def search_data(query, city):
 	details = load_details(city)
-	return details[:5]
+	return random.sample(details,5)
 	
