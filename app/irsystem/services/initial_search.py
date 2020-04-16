@@ -16,15 +16,15 @@ def basic_search(details):
 	return helpers.sort_by_score(details)
 
 def keyword_search(details, word):
-	for detail in details:
+	for place in details:
 		score = 0
-		if "reviews" in detail:
-			for review in detail["reviews"]:
+		if "reviews" in place:
+			for review in place["reviews"]:
 				text = review["text"]
 				if word in text:
 					score += 1
 
-		detail["score"] = score
+		place["score"] = score
 	return helpers.sort_by_score(details)
 
 
