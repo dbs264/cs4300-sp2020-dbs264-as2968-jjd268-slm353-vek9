@@ -32,10 +32,10 @@ def search():
 		data = map(lambda x: x["name"],system.search_data(bar_name,city))
 	#retrieve based on additional preferences, need to factor in presets
 	else:
-		start = "Your search: " + query + ", " 
+		start = "Your search: " + query
 		for i in attribute_list:
 			if i:
-				start += str(i) + ', '
+				start += ", " + str(i) 
 		output_message = start + " in " + city + " for " + "$" * int(price)
 		data = map(lambda x: x["name"],system.search_data(query,city))
 
