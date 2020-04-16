@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/main.css">
+    </head>
+    <body>
+        <div class="topcorner">
+            <p>Project Name: {{ name }}</p>
+            <p>Student Name: ({{ netid }})</p>
+        </div>
+        <form class="form-inline global-search">
+            <h1 style="font-size: 55px; font-family:Futura; color: #34A853;">
+               ClubAdvisor 
+            </h1>
+            
+            <br><br>
+            
+            <div class="form-group">
+                <label for = city> Input a city: </label>
+                <br>
+                <input type="text" name="city" class="form-control" placeholder="City" value = "New York">
+                </br>
+                </br>
+
+
+                <label for = price> Input a maximum price level from 1 to 5: </label>
+                <br>
+                <label for = price> $: </label>
+                <input type="radio" name="price"  value ="1">
+                <label for = price> $$: </label>
+                <input type="radio" name="price"  value ="2">
+                <label for = price> $$$: </label>
+                <input type="radio" name="price"  value ="3">
+                <label for = price> $$$$: </label>
+                <input type="radio" name="price"  value ="4">
+                <label for = price> $$$$$: </label>
+                <input type="radio" name="price"  value ="5">
+      
+                </br><br>
+
+                <label> Prefences: </label>
+                <br>
+                <label for = attribute1> Dancing: </label>
+                <input type="checkbox" name="attribute1"  value ="dancing">
+                <label for = attribute2> Touristy: </label>
+                <input type="checkbox" name="attribute2"  value ="touristy">
+                <label for = attribute3> Vibey: </label>
+                <input type="checkbox" name="attribute3"  value ="vibey">
+                <label for = attribute4> Strong Booze: </label>
+                <input type="checkbox" name="attribute4"  value ="strong booze">
+                
+            </br><br>
+                <label for = search> Additional preferneces: </label>
+                <br>
+                <input id="input" type="text" name="search" class="form-control" placeholder="Your Input">
+                <br><br>
+
+                <label for = search> Or search similar bars to one you already love: </label>
+                <br>
+                <input id="input" type="text" name="bar_name" class="form-control" placeholder="Bar Name">
+
+                
+            </div>
+            <br><br>
+            <button type="submit" class="btn btn-info"> Lets Ride! </button>
+        </form>
+        <form class="form-inline global-search">
+        {% if data %}
+            <h1>{{output_message}}</h1>
+            {% for d in data %}  
+                <br>
+                <p>{{d}}</p>
+            {% endfor %}
+        {% endif %}
+        </form>
+    </body>
+
+</html>
