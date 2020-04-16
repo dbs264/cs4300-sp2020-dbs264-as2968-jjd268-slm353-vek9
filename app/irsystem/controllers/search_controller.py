@@ -29,7 +29,7 @@ def search():
 	#if given bar name, retrieve with similar bars
 	elif bar_name:
 		output_message = "Your search: Bars like " + bar_name + " in " + city + " for " + "$" * int(price)
-		data = map(lambda x: x["name"],system.search_data(bar_name,city))
+		data = system.search_data(bar_name,city)
 	#retrieve based on additional preferences, need to factor in presets
 	else:
 		start = "Your search: " + query
@@ -37,7 +37,7 @@ def search():
 			if i:
 				start += ", " + str(i) 
 		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = map(lambda x: x["name"],system.search_data(query,city))
+		data = system.search_data(query,city)
 
 	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 

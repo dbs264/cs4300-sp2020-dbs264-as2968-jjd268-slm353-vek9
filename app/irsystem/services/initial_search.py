@@ -1,9 +1,51 @@
 import config, random, json
-from pathlib import Path
+
 
 data_path = config.basedir+"/data/"
 
-
+def format_output(place_details):
+	result = {}
+	if "name" in place_details:
+		result["name"] = place_details["name"]
+	else: 
+		result["name"] = ""
+	if "formatted_address" in place_details:
+		result["address"] = place_details["formatted_address"]
+	else: 
+		result["address"] = ""
+	if "formatted_phone_number" in place_details:
+		result["phone_number"] = place_details["formatted_phone_number"]
+	else: 
+		result["phone_number"] = ""
+	if "geometry" in place_details and "location" in place_details["geometry"]:
+		result["coordinates"] = place_details["geometry"]["location"]
+	else: 
+		result["coordinates"] = {"lat": "", "lng" :  ""}
+	if "opening_hours" in place_details and "weekday_text" in place_details["opening_hours"]:
+		result["hours_open"] = place_details["opening_hours"]["weekday_text"]
+	else: 
+		result["hours_open"] = []
+	if "price_level" in place_details:
+		result["price"] = place_details["price_level"]
+	else: 
+		result["price"] = ""
+	if "rating" in place_details:
+		result["rating"] = place_details["rating"]
+	else: 
+		result["name"] = ""
+	if "reviews" in place_details:
+		result["reviews"] = [x["text"] for x in place_details["reviews"]]
+	else:
+		result["reviews"] = []
+	if "user_ratings_total" in place_details:
+		result["num_ratings"] = place_details["user_ratings_total"]
+	else:
+		result["num_ratings"] = ""
+	if "url" in place_details:
+		result["google_url"] = place_details["url"]
+	else:
+		result["google_url"] = ""
+	return result
 
 def load_details(city):
 	city = city.lower().replace(" ", "_")
@@ -12,5 +54,8 @@ def load_details(city):
 
 def search_data(query, city):
 	details = load_details(city)
-	return random.sample(details,5)
+	top_five = random.sample(details,5)
+	return [format_output(x) for x in top_five]
+
+
 	
