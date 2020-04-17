@@ -86,9 +86,9 @@
             {% for d in data %}  
                 <br>
                 <div class = results>
-                
                 <p class = output_name> <em> {{d['name']}} </em> </p>
                 <br>
+             
                 
                 <p class = score> Similarity Score: {{d['score']}}</p>
                 {% if d['rating'] %}
@@ -98,7 +98,7 @@
                     <p class = price> {{"$" * d['price']|int}} </p>
                 {% endif %}
                 <br>
-                <p class = address> {{d['address']}}</p>
+                <a href ="{{d['google_url']}}" > {{d['address']}}</a>
                 <br>
                 {% if d['hours_open'] %}
                 <div class = hours>
@@ -129,11 +129,6 @@
             
         {% endif %}
         </form>
-        rating
-        price
-        hours_open
-        score
-        reviews
     </body>
 
 </html>
