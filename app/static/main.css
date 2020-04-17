@@ -132,7 +132,8 @@ label{
     opacity: 0.5;
   }
   
-  .form-control:focus + .form-control-placeholder {
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
     font-size: 80%;
     transform: translate3d(0, -100%, 0);
     opacity: 1;
@@ -162,6 +163,10 @@ label{
     justify-content: center;
     font-family: 'Major Mono Display', monospace;
   }
+
+  .submit{
+    margin-top: 5%;
+    }
 
   .submit:hover{
       background-color: #A2AEF4;
@@ -197,3 +202,4 @@ label{
   .hours{
       align-items: left;
   }
+

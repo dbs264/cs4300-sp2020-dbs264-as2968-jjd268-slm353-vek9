@@ -10,9 +10,13 @@
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </head>
     <body>
 
+        <!--------------------------------------------- HEADER  --------------------------------------------->
         <div class="hero-image">
             <div class="hero-text">
               <h1>
@@ -23,61 +27,103 @@
             </div>
           </div>
 
-        <form class="form-horizontal">
+        <!---------------------------------------------  FORM  --------------------------------------------->
+        <form class="form-horizontal" id = "myform">
+            <div id="demo">
                         
-            <div class="form-group">
-                <input type="text" id="city" name="city" class="form-control" required>
-                <label class="form-control-placeholder" for="city">Where to?</label>
-            </div>
+                <!-----------------------------------  CITY  ----------------------------------->
+                <div class="form-group">
+                    <input type="text" id="city" name="city" class="form-control" value = "New York" required>
+                    <label class="form-control-placeholder" for="city">Where to?</label>
+                </div>
 
-            <div class="form-group">
-                <label for="price">Price</label>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary">
-                      <input type="radio" name="price" value = "1"> $
-                    </label>
-                    <label class="btn btn-secondary">
-                      <input type="radio" name="price" value = "2"> $$
-                    </label>
-                    <label class="btn btn-secondary">
-                      <input type="radio" name="price" value = "3"> $$$
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="price" value = "4"> $$$$
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="price" value = "5"> $$$$$
-                    </label>
-                  </div>
-            </div>
+                <!-----------------------------------  PRICE ----------------------------------->
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                        <input type="radio" name="price" value = "1"> $
+                        </label>
+                        <label class="btn btn-secondary">
+                        <input type="radio" name="price" value = "2"> $$
+                        </label>
+                        <label class="btn btn-secondary">
+                        <input type="radio" name="price" value = "3"> $$$
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="price" value = "4"> $$$$
+                        </label>
+                        <label class="btn btn-secondary">
+                            <input type="radio" name="price" value = "5"> $$$$$
+                        </label>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="preferences">Preferences</label>
+                <!----------------------------------- PREFS ----------------------------------->
+                <div class="form-group">
+                    <label for="preferences">Preferences</label>
 
-                <div class="dropdown bootstrap-select show-tick show" style="color: white;">
-                    <select class="selectpicker " multiple tabindex="-98" data-size="4" data-dropup-auto="false"  >
-                        <option name="attribute1"  value ="dancing" >Dancing</option>
-                        <option name="attribute2"  value ="touristy" >Touristy</option>
-                        <option name="attribute3"  value ="vibey">Vibey</option>
-                        <option name="attribute4"  value ="strong booze" >Strong Booze</option>
-                    </select>
+                    <div class="dropdown bootstrap-select show-tick show" style="color: white;">
+                        <select class="selectpicker " multiple tabindex="-98" data-size="4" data-dropup-auto="false"  >
+                            <option name="attribute1"  value ="dancing" >Dancing</option>
+                            <option name="attribute2"  value ="touristy" >Touristy</option>
+                            <option name="attribute3"  value ="vibey">Vibey</option>
+                            <option name="attribute4"  value ="strong booze" >Strong Booze</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!----------------------------------- OTHER ----------------------------------->
+                <div class="form-group">
+                    <input type="text" id="search" name = "search" class="form-control" value = "edm" required >
+                    <label class="form-control-placeholder" for="search">Other preferences?</label>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="text" id="bar_name" name = "bar_name" class="form-control" value = "vandal" required>
+                    <label class="form-control-placeholder" for="bar_name">Search bars similar to...</label>
+                </div>
+            
+
+            <!----------------------------------- SUBMIT ----------------------------------->
+                <div class="submit-div">
+                    <button 
+                        id="submit"
+                        type="submit" 
+                        class="submit btn btn-info " 
+                        > lets ride! 
+                    </button> 
                 </div>
             </div>
 
-            <div class="form-group">
-                <input type="text" id="search" name = "search" class="form-control" >
-                <label class="form-control-placeholder" for="search">Other preferences?</label>
-            </div>
+        <!----------------------------------- RESTART ----------------------------------->
+            <!-- <div class="submit-div" style="display: none;">
+                <button 
+                    id="restart"
+                    type="button" 
+                    class="submit btn btn-info " 
+                    > restart! 
+                </button> 
+            </div> -->
 
-            <div class="form-group">
-                <input type="text" id="bar_name" name = "bar_name" class="form-control">
-                <label class="form-control-placeholder" for="bar_name">Search bars similar to...</label>
-            </div>
-            <div class="submit-div">
-                <button type="submit" class="submit btn btn-info " > lets ride! </button> 
-            </div>
         </form>
+
         
+        <script>
+            // on page load: the form should be exposed
+            // click submit button
+            // submit the form
+            // page is reloaded
+            // form is collapsed
+            // restart button displayed
+            // click on restart
+            // reset the form
+            // expand the form
+            // clear the previous output
+            
+        </script>
+
         <form class="form-inline global-search" style="color: white;">
         {% if data %}
             <h3>{{output_message}}</h3>
