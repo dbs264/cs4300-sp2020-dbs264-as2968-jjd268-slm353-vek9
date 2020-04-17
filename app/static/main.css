@@ -177,13 +177,17 @@ label{
     transform: translate3d(0px, 34px, 0px);
   } */
 
-  .results{
-      background-color: #A2AEF4;
-      border: 10px solid white;
-      margin-left: 30px;
-      margin-right: 30px;
-      margin-bottom: 20px;
+  .result_container{
+    width: 90%;
+    border: 10px solid white;
+    margin-left: 30px auto;
+    margin-right: 30px auto;
+    background-color: #A2AEF4;
+    margin-bottom: 20px;
   }
+
+
+  
 
   .output_name{
     font-size: 30px;
@@ -199,7 +203,23 @@ label{
       font-size: 20px;
   }
 
-  .hours{
-      align-items: left;
+  .top{
+      margin-top: 20px;
+      display: flex;
+  }
+  .left{
+      flex-grow: 1;
+      width: 100%;
+  }
+  .right{
+      flex-grow: 3;
+      margin-right: 20px;
+  }
+  .bar_photo{
+      width: 100%;
   }
 
+  .review{
+   
+      margin-right:30px;
+  }
