@@ -1,4 +1,5 @@
 import config, random, json
+from collections import Counter
 from app.irsystem.services import search_helpers as helpers
 
 
@@ -27,11 +28,25 @@ def keyword_search(details, word):
 		place["score"] = score
 	return helpers.sort_by_score(details)
 
+def multiple_key_word_counts(details, words):
+	print(words)
+	word_list = words.lower().split()
+	print(word_list)
+	for place in details:
+		score = 0
+		if "reviews" in place:
+			for review in place["reviews"]:
+				text_counter = Counter(review["text"].lower().split())
+				for word in word_list:
+					score += text_counter[word]
+		place["score"] = score
+	return helpers.sort_by_score(details)
+
 
 
 def search_data(query, city):
 	details = helpers.load_details(city)
-	top_five = keyword_search(details, query)
+	top_five = multiple_key_word_counts(details, query)
 	return [helpers.format_output(x) for x in top_five]
 
 
