@@ -11,7 +11,6 @@ data = convert_city('data/new_york_details.json')
 keys = ['formatted_address', 'formatted_phone_number', 'geometry', 'name', 'opening_hours', 'price_level', 
         'rating', 'reviews', 'types', 'url', 'user_ratings_total']
 
-print(data[0]['opening_hours'])
 
 for place in data:
         if 'geometry' in place:
@@ -23,4 +22,7 @@ for place in data:
                 reviews.append(review['text'])
             place['reviews'] = reviews
 
-print(data[0]['opening_hours'])
+with open("Ny_cleandetails.json", 'w') as outfile:
+	json.dump(place, outfile)
+
+
