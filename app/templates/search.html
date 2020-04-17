@@ -69,10 +69,18 @@
             <h1>{{output_message}}</h1>
             {% for d in data %}  
                 <br>
-                <p>{{d}}</p>
+                <p class = name> {{d['name']}} </p>
+                <p class = address> {{d['address']}}</p>
+                <p class = rating> "⭑" {{ "⭑" * number(d['rating'])}} </p>
+                <br>
             {% endfor %}
         {% endif %}
         </form>
+        rating
+        price
+        hours_open
+        score
+        reviews
     </body>
 
 </html>
