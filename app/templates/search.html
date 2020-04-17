@@ -77,15 +77,63 @@
                 <button type="submit" class="submit btn btn-info " > lets ride! </button> 
             </div>
         </form>
+        
         <form class="form-inline global-search" style="color: white;">
         {% if data %}
-            <h1>{{output_message}}</h1>
+            <h3>{{output_message}}</h3>
+            <br>
+            
             {% for d in data %}  
                 <br>
-                <p>{{d}}</p>
+                <div class = results>
+                
+                <p class = output_name> <em> {{d['name']}} </em> </p>
+                <br>
+                
+                <p class = score> Similarity Score: {{d['score']}}</p>
+                {% if d['rating'] %}
+                    <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
+                {% endif %}
+                {% if d['price'] %}
+                    <p class = price> {{"$" * d['price']|int}} </p>
+                {% endif %}
+                <br>
+                <p class = address> {{d['address']}}</p>
+                <br>
+                {% if d['hours_open'] %}
+                <div class = hours>
+                <ul>
+                    {% for i in d['hours_open']%}
+                    <li class = day_hours> {{i}} </li>
+                    <br>
+                    {% endfor %}
+                </ul>
+                </div>
+                {% endif %}
+                <br>
+                {% if d['reviews'] %}
+                <div class = reviews>
+                <ul>
+                    {% for i in d['reviews']%}
+                    <li class = review> " {{i}} "</li>
+                    <br>
+                   
+                    {% endfor %}
+                </ul>
+                </div>
+                {% endif %}
+                </div>
+                <br>
+                
             {% endfor %}
+            
         {% endif %}
         </form>
+        rating
+        price
+        hours_open
+        score
+        reviews
     </body>
 
 </html>

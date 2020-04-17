@@ -14,6 +14,8 @@ def search():
 	bar_name = request.args.get('bar_name')
 	attribute_list = [request.args.get('attribute1'), request.args.get('attribute2'), request.args.get('attribute3'), request.args.get('attribute4')]
 	
+	if not query:
+		query = ''
 	#if no price entered assuming max price
 	if not price:
 		price = 5

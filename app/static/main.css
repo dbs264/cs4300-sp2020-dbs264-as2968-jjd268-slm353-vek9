@@ -152,6 +152,7 @@ label{
       background-color: white;
   }
 
+<<<<<<< HEAD
   .bootstrap-select{
       width: max-content!important;
 
@@ -167,3 +168,34 @@ label{
       background-color: #A2AEF4;
       border-color: none;
   }
+=======
+  .show {
+    transform: translate3d(0px, 34px, 0px);
+  }
+
+  .results{
+      background-color: #A2AEF4;
+      border: 10px solid white;
+      margin-left: 30px;
+      margin-right: 30px;
+      margin-bottom: 20px;
+  }
+
+  .output_name{
+    font-size: 30px;
+  }
+
+  .rating{
+      color: #e6c702;
+      font-size: 24px;
+  }
+
+  .price{
+      color: #065408;
+      font-size: 20px;
+  }
+
+  .hours{
+      align-items: left;
+  }
+>>>>>>> d6d6c004b60c61dad07d2f6d3a3d10099b51d8d8
