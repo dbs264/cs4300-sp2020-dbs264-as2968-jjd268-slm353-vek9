@@ -198,6 +198,18 @@ label{
       font-size: 20px;
   }
 
-  .hours{
-      align-items: left;
+  .top{
+      margin-top: 20px;
+      display: flex;
+  }
+  .left{
+      flex-grow: 1;
+      width: 100%;
+  }
+  .right{
+      flex-grow: 3;
+      margin-right: 20px;
+  }
+  .bar_photo{
+      width: 100%;
   }

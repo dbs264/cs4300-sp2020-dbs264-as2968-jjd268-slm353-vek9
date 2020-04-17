@@ -88,10 +88,12 @@
                 <br>
                 <div class = "result_container">
                 <div class = results>
+                
                 <p class = output_name> <em> {{d['name']}} </em> </p>
                 <br>
              
-                
+                <div class = top>
+                <div class = left>
                 <p class = score> Similarity Score: {{d['score']}}</p>
                 {% if d['rating'] %}
                     <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
@@ -112,6 +114,13 @@
                 </ul>
                 </div>
                 {% endif %}
+                </div>
+                <div class = right >
+                {% if d['photo_url'] %}
+                    <img src = "{{d['photo_url']}}" class = bar_photo> </img>
+                {% endif %}
+                </div>
+                </div>
                 <br>
                 <br>
                 {% if d['reviews'] %}
