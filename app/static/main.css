@@ -1,3 +1,11 @@
+/* COLOR PALETTE //////////////
+BACKGROUND COLOR: #040D3A
+LIGHT ACCENT: #A2AEF4
+CORNFLOWER BLUE: #6D8BF0
+ROYAL BLUE: #1F51CB
+NAVY: #061E6C
+*/
+
 @media (min-width: 1200px) {
 .container {
     max-width: 970px;
@@ -8,10 +16,7 @@
 padding: 20px 0;
 text-align:center;
 }
-body {
-padding-top: 15%;
-padding-bottom: 15px;
-}
+
 .global-search {
 text-align:center;
 padding:10px;
@@ -30,9 +35,124 @@ top:2%;
 right:2%;
 }
 .btn{
-background-color: #34A853;
-border: none
+background-color: #49537C;
+/* border: none */
 }
 .step-links a{
 color: #34A853;
 }
+
+body, html {
+    background-color: #040D3A;
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+ }
+  
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.club-text {
+    font-size:55px;
+    font-family: 'Monoton', cursive;
+}
+
+.advisor-text {
+    font-size:65px;
+    font-family: 'Major Mono Display', monospace;
+}
+
+.hero-text button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 10px 25px;
+    color: black;
+    background-color: #ddd;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hero-text button:hover {
+    background-color: #555;
+    color: white;
+}
+
+label{
+    color: white
+}
+
+ .form-control {
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    box-shadow: none;
+    background-color: #040D3A;
+    border-radius: 0px;
+    font-size: 24px;
+    height: 7%;
+    position: relative;
+    margin-bottom: 1.5rem;
+    color: #A2AEF4
+}
+.form-control:focus{
+    box-shadow: none;
+    color: white;
+    border-color: #A2AEF4
+}
+
+
+.form-horizontal .form-group{
+    margin: 5%;
+    position: relative;
+
+  }
+  
+  .form-control-placeholder {
+    font-size: 24px;
+    position: absolute;
+    top: 0;
+    padding: 6px 0 0 12px;
+    transition: all 250ms;
+    opacity: 0.5;
+  }
+  
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    font-size: 80%;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+  }
+
+  label {
+    padding: 6px 12px 0 12px;
+    font-size: 16px;
+    vertical-align: top;
+  }
+
+  .btn-secondary.active, .btn-secondary.focus {
+      background-color: #A2AEF4;
+  }
+
+  .bootstrap-select .dropdown-menu li a {
+      background-color: white;
+  }
+
+  .show {
+    transform: translate3d(0px, 34px, 0px);
+  }
