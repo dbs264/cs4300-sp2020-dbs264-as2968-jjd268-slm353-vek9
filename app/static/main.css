@@ -172,13 +172,17 @@ label{
     transform: translate3d(0px, 34px, 0px);
   } */
 
-  .results{
-      background-color: #A2AEF4;
-      border: 10px solid white;
-      margin-left: 30px;
-      margin-right: 30px;
-      margin-bottom: 20px;
+  .result_container{
+    width: 90%;
+    border: 10px solid white;
+    margin-left: 30px auto;
+    margin-right: 30px auto;
+    background-color: #A2AEF4;
+    margin-bottom: 20px;
   }
+
+
+  
 
   .output_name{
     font-size: 30px;
