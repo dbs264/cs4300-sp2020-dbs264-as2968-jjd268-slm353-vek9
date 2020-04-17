@@ -3,6 +3,7 @@ import requests, json
 api_key = "AIzaSyDnrzcDEiBDwe0K5AM4whWb-Bp-38gql7w"
 nearbyUrl ="https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
 placeDetailsUrl ="https://maps.googleapis.com/maps/api/place/details/json?"
+photosUrl = "https://maps.googleapis.com/maps/api/place/photo?"
 types =["bar","night_club"]
 radius = "10000"
 data_path = "../data/"
@@ -66,13 +67,22 @@ def add_to_place_ids(city,locations,isNewCity = False):
 	build_place_id_list(locations,city,place_ids)
 
 	
+def convert_photos(detail):
+	if "photos" in detail and len(detail["photos"]) > 0:
+		photoRef = detail["photos"][0]["photo_reference"]
+		detail["photo_url"] = photosUrl+"key="+api_key+"&photoreference="+photoRef+"&maxwidth=1000"
+	else:
+		detail["photo_url"] = "https://www.cs.cornell.edu/~cristian/index_files/IMG_1820_3.jpg"
+	return detail
 
 
 def call_place_details(place_id):
 	fields = "name,url,price_level,user_ratings_total,rating,review/text,geometry/location,formatted_address," + \
-		"formatted_phone_number,types,opening_hours"
+		"formatted_phone_number,types,opening_hours,photos"
 	r = requests.get(placeDetailsUrl+"key="+api_key+"&place_id="+place_id+"&fields="+fields)
-	return r.json()["result"]
+	return convert_photos(r.json()["result"])
+
+
 
 def build_place_details_list(city):
 	print("Building {} place details file".format(city))
