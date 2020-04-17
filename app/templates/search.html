@@ -26,7 +26,7 @@
         <form class="form-horizontal">
                         
             <div class="form-group">
-                <input type="text" id="city" class="form-control" required>
+                <input type="text" id="city" name = 'city' class="form-control" required>
                 <label class="form-control-placeholder" for="city">Where to?</label>
             </div>
             <div class="form-group">
@@ -64,7 +64,7 @@
                 <input type="checkbox" name="attribute3"  value ="vibey">
                 <label for = attribute4> Strong Booze: </label>
                 <input type="checkbox" name="attribute4"  value ="strong booze">
-                
+            
             </br><br>
                 <label for = search> Additional preferneces: </label>
                 <br>
@@ -77,19 +77,58 @@
 
                 
             </div> -->
-            <!-- <br><br>
-            <button type="submit" class="btn btn-info"> Lets Ride! </button> -->
+            <br><br>
+            <button type="submit" class="btn btn-info"> Lets Ride! </button> 
         </form>
         <form class="form-inline global-search">
         {% if data %}
-            <h1>{{output_message}}</h1>
+            <h3>{{output_message}}</h3>
+            <br>
+            
             {% for d in data %}  
                 <br>
-                <p class = name> {{d['name']}} </p>
-                <p class = address> {{d['address']}}</p>
-                <p class = rating> "⭑" {{ "⭑" * number(d['rating'])}} </p>
+                <div class = results>
+                
+                <p class = output_name> <em> {{d['name']}} </em> </p>
                 <br>
+                
+                <p class = score> Similarity Score: {{d['score']}}</p>
+                {% if d['rating'] %}
+                    <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
+                {% endif %}
+                {% if d['price'] %}
+                    <p class = price> {{"$" * d['price']|int}} </p>
+                {% endif %}
+                <br>
+                <p class = address> {{d['address']}}</p>
+                <br>
+                {% if d['hours_open'] %}
+                <div class = hours>
+                <ul>
+                    {% for i in d['hours_open']%}
+                    <li class = day_hours> {{i}} </li>
+                    <br>
+                    {% endfor %}
+                </ul>
+                </div>
+                {% endif %}
+                <br>
+                {% if d['reviews'] %}
+                <div class = reviews>
+                <ul>
+                    {% for i in d['reviews']%}
+                    <li class = review> " {{i}} "</li>
+                    <br>
+                   
+                    {% endfor %}
+                </ul>
+                </div>
+                {% endif %}
+                </div>
+                <br>
+                
             {% endfor %}
+            
         {% endif %}
         </form>
         rating
