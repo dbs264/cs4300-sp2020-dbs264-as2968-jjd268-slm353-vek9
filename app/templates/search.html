@@ -84,6 +84,7 @@
             <br>
             
             {% for d in data %}  
+                {% set num = loop.index %}
                 <br>
                 <div class = results>
                 <p class = output_name> <em> {{d['name']}} </em> </p>
@@ -111,24 +112,99 @@
                 </div>
                 {% endif %}
                 <br>
+                <br>
                 {% if d['reviews'] %}
                 <div class = reviews>
                 <ul>
-                    {% for i in d['reviews']%}
+
+                    {% if d['reviews'][0] %}
+                        <li id = rev1 class = "review active {{num}}"> " {{d['reviews'][0]}} "</li>
+             
+                    {% endif %}
+                    {% if d['reviews'][1] %}
+                        <li id = rev2 class = "review hidden {{num}}"> " {{d['reviews'][1]}} "</li>
+                  
+                    {% endif %}
+                    {% if d['reviews'][2] %}
+                        <li id = rev3 class = "review hidden {{num}}"> " {{d['reviews'][2]}} "</li>
+              
+                    {% endif %}
+                    {% if d['reviews'][3] %}
+                        <li id = rev4 class = "review hidden {{num}}"> " {{d['reviews'][3]}} "</li>
+                      
+                    {% endif %}
+                    {% if d['reviews'][4] %}
+                        <li id = rev5 class = "review hidden {{num}}" > " {{d['reviews'][4]}} "</li>
+                    
+                    {% endif %}
+                    <!--{% for i in d['reviews']%}
                     <li class = review> " {{i}} "</li>
-                    <br>
+                    <br> 
                    
-                    {% endfor %}
+                    {% endfor %}--> 
+                    
                 </ul>
                 </div>
+
+                <a class = "prev {{num}}" onclick="slides(-1, '{{num}}')"  > &#10094; </a>
+                <a class = "next {{num}}" onclick="slides(1, '{{num}}')"  > &#10095; </a>
+                
                 {% endif %}
                 </div>
                 <br>
                 
+              
             {% endfor %}
             
         {% endif %}
         </form>
+        <script>
+
+            
+         
+            function slides(n, num){
+                //let revs = ["rev1", "rev2", "rev3", "rev4", "rev5"] 
+                let revs = document.getElementsByClassName("review " + num + "")
+               
+                if (n == 1){
+                    for (i = 0; i<revs.length; i+=1){
+            
+                        if (revs[i].className == "review active " + num ){
+                            if(i == revs.length-1){
+                                revs[i].className = "review hidden " + num
+                                revs[0].className = "review active " + num
+                                break
+                            }else{
+                                revs[i].className = "review hidden " + num 
+                                revs[i+1].className = "review active " + num 
+                                break
+                            }
+                    }
+                        
+                    }
+                }
+                if (n == -1){
+                    for (i = 0; i<revs.length; i+=1){
+            
+                        if (revs[i].className == "review active " + num ){
+                            if(i == 0){
+                                revs[i].className = "review hidden " + num
+                                revs[revs.length-1].className = "review active " + num
+                                break
+                            }else{
+                                revs[i].className = "review hidden " + num 
+                                revs[i-1].className = "review active " + num 
+                                break
+                            }
+                    }
+                        
+                    }
+                }
+                
+                
+                }
+            </script>
+        
     </body>
 
 </html>
