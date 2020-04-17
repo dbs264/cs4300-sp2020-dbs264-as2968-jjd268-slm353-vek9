@@ -2,39 +2,55 @@
     <head>
         <link rel="stylesheet" href="/static/bootstrap.min.css">
         <link rel="stylesheet" href="/static/main.css">
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon+SC&family=Major+Mono+Display&family=Monoton&family=Montserrat&family=Six+Caps&display=swap" rel="stylesheet">    
+        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css"> -->
+
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script> -->
+        <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/i18n/defaults-*.min.js"></script> -->
     </head>
     <body>
-        <div class="topcorner">
-            <p>Project Name: {{ name }}</p>
-            <p>Student Name: ({{ netid }})</p>
-        </div>
-        <form class="form-inline global-search">
-            <h1 style="font-size: 55px; font-family:Futura; color: #34A853;">
-               ClubAdvisor 
-            </h1>
-            
-            <br><br>
-            
+
+        <div class="hero-image">
+            <div class="hero-text">
+              <h1>
+                  <span class="club-text">CLUB</span>
+                  <span class="advisor-text">Advisor</span>
+                </h1>
+              <p style = "font-size: 30px;">We make going out easy</p>
+            </div>
+          </div>
+
+        <form class="form-horizontal">
+                        
             <div class="form-group">
-                <label for = city> Input a city: </label>
-                <br>
-                <input type="text" name="city" class="form-control" placeholder="City" value = "New York">
-                </br>
-                </br>
-
-
-                <label for = price> Input a maximum price level from 1 to 5: </label>
-                <br>
-                <label for = price> $: </label>
-                <input type="radio" name="price"  value ="1">
-                <label for = price> $$: </label>
-                <input type="radio" name="price"  value ="2">
-                <label for = price> $$$: </label>
-                <input type="radio" name="price"  value ="3">
-                <label for = price> $$$$: </label>
-                <input type="radio" name="price"  value ="4">
-                <label for = price> $$$$$: </label>
-                <input type="radio" name="price"  value ="5">
+                <input type="text" id="city" class="form-control" required>
+                <label class="form-control-placeholder" for="city">Where to?</label>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="price" value = "1"> $
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="price" value = "2"> $$
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="price" value = "3"> $$$
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="price" value = "4"> $$$$
+                    </label>
+                    <label class="btn btn-secondary">
+                        <input type="radio" name="price" value = "5"> $$$$$
+                    </label>
+                  </div>
+            </div>
+            
+<!--
       
                 </br><br>
 
@@ -60,9 +76,9 @@
                 <input id="input" type="text" name="bar_name" class="form-control" placeholder="Bar Name">
 
                 
-            </div>
-            <br><br>
-            <button type="submit" class="btn btn-info"> Lets Ride! </button>
+            </div> -->
+            <!-- <br><br>
+            <button type="submit" class="btn btn-info"> Lets Ride! </button> -->
         </form>
         <form class="form-inline global-search">
         {% if data %}
