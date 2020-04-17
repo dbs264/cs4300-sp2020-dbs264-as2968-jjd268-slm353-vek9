@@ -45,6 +45,7 @@ def format_output(place_details):
 		result["google_url"] = place_details["url"]
 	else:
 		result["google_url"] = ""
+	result["photo_url"] = place_details["photo_url"]
 	return result
 
 def load_details(city):
