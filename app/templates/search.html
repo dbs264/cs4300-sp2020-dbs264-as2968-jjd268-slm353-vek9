@@ -13,19 +13,24 @@
         
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     </head>
     <body>
 
         <!--------------------------------------------- HEADER  --------------------------------------------->
-        <div class="hero-image">
-            <div class="hero-text">
-              <h1>
-                  <span class="club-text">CLUB</span>
-                  <span class="advisor-text">Advisor</span>
-                </h1>
-              <p style = "font-size: 30px;">We make going out easy</p>
-            </div>
-          </div>
+        <div class="header">
+            <div class="hero-image">
+                <div class="hero-text">
+                  <h1>
+                      <span class="club-text">CLUB</span>
+                      <span class="advisor-text">Advisor</span>
+                    </h1>
+                  <p style = "font-size: 30px;">We make going out easy</p>
+                </div>
+              </div>
+        </div>
 
         <!---------------------------------------------  FORM  --------------------------------------------->
         <form class="form-horizontal" id = "myform">
@@ -40,12 +45,12 @@
                 <!-----------------------------------  PRICE ----------------------------------->
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn btn-secondary">
                         <input type="radio" name="price" value = "1"> $
                         </label>
                         <label class="btn btn-secondary">
-                        <input type="radio" name="price" value = "2"> $$
+                        <input type="radio"  name="price" value = "2"> $$
                         </label>
                         <label class="btn btn-secondary">
                         <input type="radio" name="price" value = "3"> $$$
@@ -64,205 +69,115 @@
                     <label for="preferences">Preferences</label>
 
                     <div class="dropdown bootstrap-select show-tick show" style="color: white;">
-                        <select class="selectpicker " multiple tabindex="-98" data-size="4" data-dropup-auto="false"  >
-                            <option name="attribute1"  value ="dancing" >Dancing</option>
-                            <option name="attribute2"  value ="touristy" >Touristy</option>
-                            <option name="attribute3"  value ="vibey">Vibey</option>
-                            <option name="attribute4"  value ="strong booze" >Strong Booze</option>
+                        <select id="attributes" class="selectpicker " multiple tabindex="-98" data-size="4" data-dropup-auto="false"  >
+                            <option id="attribute1" name="attribute1"  value ="dancing" >Dancing</option>
+                            <option id="attribute2" name="attribute2"  value ="touristy" >Touristy</option>
+                            <option id="attribute3" name="attribute3"  value ="vibey">Vibey</option>
+                            <option id="attribute4" name="attribute4"  value ="strong booze" >Strong Booze</option>
                         </select>
                     </div>
                 </div>
 
                 <!----------------------------------- OTHER ----------------------------------->
                 <div class="form-group">
-                    <input type="text" id="search" name = "search" class="form-control" value = "edm" required >
+                    <input type="text" id="search" name = "search" class="form-control" required >
                     <label class="form-control-placeholder" for="search">Other preferences?</label>
                 </div>
 
 
-                <div class="form-group">
-                    <input type="text" id="bar_name" name = "bar_name" class="form-control" value = "vandal" required>
+                <div class="form-group" style="margin-bottom: -3%;">
+                    <input type="text" id="bar_name" name = "bar_name" class="form-control" required>
                     <label class="form-control-placeholder" for="bar_name">Search bars similar to...</label>
                 </div>
+                            
             
-
-            <!----------------------------------- SUBMIT ----------------------------------->
+                <!----------------------------------- SUBMIT ----------------------------------->
                 <div class="submit-div">
                     <button 
                         id="submit"
                         type="submit" 
                         class="submit btn btn-info " 
-                        > lets ride! 
+                        > lets go. 
                     </button> 
                 </div>
             </div>
 
-        <!----------------------------------- RESTART ----------------------------------->
-            <!-- <div class="submit-div" style="display: none;">
+
+            <!----------------------------------- RESET ----------------------------------->
+            <div class="submit-div" >
                 <button 
-                    id="restart"
-                    type="button" 
+                    style="display: none;"
+                    id="reset"
+                    type="reset" 
                     class="submit btn btn-info " 
                     > restart! 
                 </button> 
-            </div> -->
-
-        </form>
-
-        
-        <script>
-            // on page load: the form should be exposed
-            // click submit button
-            // submit the form
-            // page is reloaded
-            // form is collapsed
-            // restart button displayed
-            // click on restart
-            // reset the form
-            // expand the form
-            // clear the previous output
-
-        </script>
-
-        <form class="form-inline global-search" style="color: white;">
-        {% if data %}
-            <h3>{{output_message}}</h3>
-            <br>
-            
-            {% for d in data %}  
-                {% set num = loop.index %}
-                <br>
-                <div class = "result_container">
-                <div class = results>
-                
-                <p class = output_name> <em> {{d['name']}} </em> </p>
-                <br>
-             
-                <div class = top>
-                <div class = left>
-                <p class = score> Similarity Score: {{d['score']}}</p>
-                {% if d['rating'] %}
-                    <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
-                {% endif %}
-                {% if d['price'] %}
-                    <p class = price> {{"$" * d['price']|int}} </p>
-                {% endif %}
-                <br>
-                <a href ="{{d['google_url']}}" > {{d['address']}}</a>
-                <br>
-                {% if d['hours_open'] %}
-                <div class = hours>
-                <ul>
-                    {% for i in d['hours_open']%}
-                    <li class = day_hours> {{i}} </li>
-                    <br>
-                    {% endfor %}
-                </ul>
-                </div>
-                {% endif %}
-                </div>
-                <div class = right >
-                {% if d['photo_url'] %}
-                    <img src = "{{d['photo_url']}}" class = bar_photo> </img>
-                {% endif %}
-                </div>
-                </div>
-                <br>
-                <br>
-                {% if d['reviews'] %}
-                <div class = reviews>
-                <ul>
-
-                    {% if d['reviews'][0] %}
-                        <li id = rev1 class = "review active {{num}}"> " {{d['reviews'][0]}} "</li>
-             
-                    {% endif %}
-                    {% if d['reviews'][1] %}
-                        <li id = rev2 class = "review hidden {{num}}"> " {{d['reviews'][1]}} "</li>
-                  
-                    {% endif %}
-                    {% if d['reviews'][2] %}
-                        <li id = rev3 class = "review hidden {{num}}"> " {{d['reviews'][2]}} "</li>
-              
-                    {% endif %}
-                    {% if d['reviews'][3] %}
-                        <li id = rev4 class = "review hidden {{num}}"> " {{d['reviews'][3]}} "</li>
-                      
-                    {% endif %}
-                    {% if d['reviews'][4] %}
-                        <li id = rev5 class = "review hidden {{num}}" > " {{d['reviews'][4]}} "</li>
-                    
-                    {% endif %}
-                    <!--{% for i in d['reviews']%}
-                    <li class = review> " {{i}} "</li>
-                    <br> 
-                   
-                    {% endfor %}--> 
-                    
-                </ul>
-                </div>
-                
-                <br>
-
-                <a class = "prev {{num}}" onclick="slides(-1, '{{num}}')"  > &#10094; </a>
-                <a class = "next {{num}}" onclick="slides(1, '{{num}}')"  > &#10095; </a>
-                
-                {% endif %}
-                </div>
             </div>
-                <br>
-                
-              
-            {% endfor %}
-            
-        {% endif %}
+
         </form>
+
+        <!----------------------------------- SUGGESTIONS ----------------------------------->
+        <div id="place_for_suggestions"></div>
+
         <script>
 
-            
-         
-            function slides(n, num){
-                //let revs = ["rev1", "rev2", "rev3", "rev4", "rev5"] 
-                let revs = document.getElementsByClassName("review " + num + "")
-               
-                if (n == 1){
-                    for (i = 0; i<revs.length; i+=1){
-            
-                        if (revs[i].className == "review active " + num ){
-                            if(i == revs.length-1){
-                                revs[i].className = "review hidden " + num
-                                revs[0].className = "review active " + num
-                                break
-                            }else{
-                                revs[i].className = "review hidden " + num 
-                                revs[i+1].className = "review active " + num 
-                                break
-                            }
-                    }
-                        
-                    }
+            $("#reset").click(function(e){
+                $("#demo").toggle('collapse');
+                $("#reset").css('display','none');
+                $("#place_for_suggestions").empty();
+            });
+
+            function submitHandler(response){
+                $("#demo").toggle('collapse')
+                $("#reset").css('display','flex')
+                $("#place_for_suggestions").html(response);
+            }
+
+            function getAttributes(){
+                list = $("#attributes").val();
+                for (var i = list.length ; i < 4; i++){
+                    list[i] = undefined
                 }
-                if (n == -1){
-                    for (i = 0; i<revs.length; i+=1){
-            
-                        if (revs[i].className == "review active " + num ){
-                            if(i == 0){
-                                revs[i].className = "review hidden " + num
-                                revs[revs.length-1].className = "review active " + num
-                                break
-                            }else{
-                                revs[i].className = "review hidden " + num 
-                                revs[i-1].className = "review active " + num 
-                                break
-                            }
-                    }
-                        
-                    }
-                }
-                
-                
-                }
-            </script>
+                return list
+            };
+
+            $("#submit").click(function(event){
+                event.preventDefault();
+                var attributes = getAttributes();
+                var city =  $("#city").val();
+                var price =  $("input[name='price']:checked").val();
+                var attribute1 =  attributes[0];
+                var attribute2 =  attributes[1];
+                var attribute3 =  attributes[2];
+                var attribute4 =  attributes[3];
+                var search = $("#search").val();
+                var bar_name = $("#bar_name").val();
+
+
+                console.log(city, price, attribute1, attribute2, attribute3,attribute4, search, bar_name)
+
+                $.ajax({
+                  url: "/suggestions",
+                  type: "get",
+                  data: {
+                    city: city, 
+                    price: price, 
+                    attribute1: attribute1, 
+                    attribute2: attribute2,
+                    attribute3: attribute3,
+                    attribute4: attribute4,
+                    search: search,
+                    bar_name: bar_name
+                },
+                  success: function(response) {
+                    submitHandler(response);
+                  },
+                  error: function(xhr) {
+                    console.log("ERROR");
+                  }
+                });
+            });
+        </script>
         
     </body>
 

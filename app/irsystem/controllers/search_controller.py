@@ -6,8 +6,8 @@ from app.irsystem.services import initial_search as system
 project_name = "Club Advisor"
 net_id = "Daniel Sanderson: dbs264, Alexander Schmack: as2968, John DeMoully: jjd268, Sophia Markel: slm353, Victoria Katz: vek9"
 
-@irsystem.route('/', methods=['GET'])
-def search():
+@irsystem.route('/suggestions')
+def suggestions():
 	query = request.args.get('search')
 	city = request.args.get('city')
 	price = request.args.get('price')
@@ -41,7 +41,10 @@ def search():
 		output_message = start + " in " + city + " for " + "$" * int(price)
 		data = system.search_data(query,city)
 
-	return render_template('search.html', name=project_name, netid=net_id, output_message=output_message, data=data)
+	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
+@irsystem.route('/')
+def search():
+	return render_template('search.html')
 
 

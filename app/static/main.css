@@ -166,16 +166,13 @@ label{
 
   .submit{
     margin-top: 5%;
-    }
+    font-size: 20px
+  }
 
   .submit:hover{
       background-color: #A2AEF4;
       border-color: none;
   }
-
-  /* .show {
-    transform: translate3d(0px, 34px, 0px);
-  } */
 
   .result_container{
     width: 90%;
