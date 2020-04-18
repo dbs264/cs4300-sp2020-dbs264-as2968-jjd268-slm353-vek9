@@ -41,7 +41,7 @@ def suggestions():
 		output_message = start + " in " + city + " for " + "$" * int(price)
 		data = system.search_data(query,city)
 
-	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
+	return render_template('try.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
 @irsystem.route('/')
 def search():
