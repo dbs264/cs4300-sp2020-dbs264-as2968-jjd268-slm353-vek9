@@ -147,6 +147,8 @@ body, html {
     font-family: 'Montserrat', sans-serif;
  }
   
+/* HEADER *****************************************/
+
 .hero-image {
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
     height: 50%;
@@ -191,6 +193,8 @@ body, html {
     color: white;
 }
 
+/*FORM ******************************************/
+
  .form-control {
     border-right: none;
     border-top: none;
@@ -204,6 +208,7 @@ body, html {
     margin-bottom: 1.5rem;
     color: #A2AEF4
 }
+
 .form-control:focus{
     box-shadow: none;
     color: white;
@@ -216,6 +221,10 @@ body, html {
     position: relative;
     display: flex;
   }
+
+/* FLOATING TEXT FIELD ******************************/
+/* CITY, SEARCH, BAR NAME ***************************/
+
   
 .form-control-placeholder {
     font-size: 24px;
@@ -240,8 +249,12 @@ body, html {
     color: white
   }
 
+ 
+
+  /*PREFERENCES DROPDOWN ******************************/
+
   .btn-secondary.active, .btn-secondary.focus {
-      background-color: #A2AEF4!important;
+    background-color: #A2AEF4!important;
   }
 
   .bootstrap-select .dropdown-menu li a {
@@ -250,8 +263,9 @@ body, html {
 
   .bootstrap-select{
       width: max-content!important;
-
   }
+
+  /*SUBMIT BUTTON ************************************/
 
   .submit-div{
     display: flex; 
@@ -269,16 +283,8 @@ body, html {
       border-color: none!important;
   }
 
-  /* .output-message{
-      color: white;
-      font-size: 24px;
-      font-family: 'Montserrat', sans-serif;
-      justify-content: center;
-      text-align: center;
-    } */
+  /*TEMPORARY SUGGESTIONS ************************************/
 
-
-  /*
   .result_container{
     width: 90%;
     border: 10px solid white;
@@ -316,19 +322,23 @@ body, html {
       margin-right: 20px;
   }
   .bar_photo{
-      width: 100%;
+      width: 400px;
+      height: 300px;
   }
 
   .review{
    
       margin-right:30px;
-  } */
+  }
+
+/* CAROUSEL SUGGESTIONS ************************************/
+
 /* 
   .container-fluid{
     margin-top:2%;
     margin-bottom:8%;
 
-} */
+}
 
 .output-message{
     color: white;
@@ -340,16 +350,18 @@ body, html {
 
 .container-multi{
     position: relative;
-    max-width: 800px; /* Maximum width */
-    margin: 0 auto; /* Center it */
+    max-width: 800px; 
+    margin: 0 auto; 
   }
   
   .container-multi .content {
-    position: absolute; /* Position the background text */
-    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
-    background: rgb(0, 0, 0); /* Fallback color */
-    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-    color: #f1f1f1; /* Grey text */
-    width: 100%; /* Full width */
-    padding: 20px; /* Some padding */
-  }
+    position: absolute; 
+    bottom: 0; 
+    background: rgb(0, 0, 0); 
+    background: rgba(0, 0, 0, 0.5); 
+    color: #f1f1f1; 
+    width: 100%; 
+    padding: 20px; 
+    font-family: 'Montserrat', sans-serif;
+
+  } */
