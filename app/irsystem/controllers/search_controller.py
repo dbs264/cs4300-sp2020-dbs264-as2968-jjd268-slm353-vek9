@@ -2,6 +2,7 @@ from . import *
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
 from app.irsystem.services import initial_search as system
+from app.irsystem.services import bars_list
 
 project_name = "Club Advisor"
 net_id = "Daniel Sanderson: dbs264, Alexander Schmack: as2968, John DeMoully: jjd268, Sophia Markel: slm353, Victoria Katz: vek9"
@@ -47,4 +48,10 @@ def suggestions():
 def search():
 	return render_template('search.html')
 
+#this one should return all of the bars in one city
+@irsystem.route('/cities')
+def cities():
+	city = request.args.get('city')
+	bars = bars_list.bars_list_for_city(city)
+	return render_template('search.html')
 
