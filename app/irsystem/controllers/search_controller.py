@@ -51,7 +51,10 @@ def search():
 #this one should return all of the bars in one city
 @irsystem.route('/cities')
 def cities():
+	cities_list = ["new_york", "New York"]
 	city = request.args.get('city')
-	bars = bars_list.bars_list_for_city(city)
+	bars = []
+	if city in cities_list:
+		bars = bars_list.bars_list_for_city(city)
 	return render_template('search.html')
 
