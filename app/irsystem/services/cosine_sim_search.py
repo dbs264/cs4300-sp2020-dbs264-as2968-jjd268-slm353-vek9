@@ -30,7 +30,7 @@ def index_search(query, index, idf, doc_norms):
 
 	return results
 
-def search(query, city):
+def search(query, city, price):
 	details = helpers.load_details(city)
 	meta_data = helpers.load_meta_data(city)
 	inv_ind = meta_data["inverted_index"]
@@ -40,5 +40,7 @@ def search(query, city):
 	scores = index_search(query,inv_ind,idf,doc_norms)
 	for ind, score in enumerate(scores):
 		details[ind]["score"] = score
-	top_results = helpers.sort_by_score(details)
+	
+	top_results = helpers.sort_by_score(helpers.filter_by_attributes(details,price))
+
 	return [ helpers.format_output(x) for x in top_results]

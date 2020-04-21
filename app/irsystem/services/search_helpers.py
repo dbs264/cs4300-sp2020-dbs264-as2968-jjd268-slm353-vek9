@@ -26,9 +26,9 @@ def format_output(place_details):
 	else: 
 		result["hours_open"] = []
 	if "price_level" in place_details:
-		result["price"] = place_details["price_level"]
+		result["price"] = int(place_details["price_level"])
 	else: 
-		result["price"] = ""
+		result["price"] = 1
 	if "rating" in place_details:
 		result["rating"] = place_details["rating"]
 	else: 
@@ -62,6 +62,8 @@ def load_meta_data(city):
 def sort_by_score(list,k =5):
 	return sorted(list, key = lambda x: x["score"],reverse = True)[:k]
 
+def filter_by_attributes(details, price):
+	return list(filter(lambda x : int(x["price_level"]) <= price if "price_level" in x else False, details))
 
 
 	

@@ -36,11 +36,8 @@ def suggestions():
 	#retrieve based on additional preferences, need to factor in presets
 	else:
 		start = "Your search: " + query
-		for i in attribute_list:
-			if i:
-				start += ", " + str(i) 
 		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = system.search(query,city)
+		data = system.search(query,city,int(price))
 
 	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
@@ -63,6 +60,7 @@ def preference_search():
 	query = request.args.get('search')
 	city = request.args.get('city')
 	price = request.args.get('price')
+	bar_name = request.args.get("bar_name")
 	if not query:
 		query = ''
 	#if no price entered assuming max price
@@ -84,11 +82,8 @@ def preference_search():
 	#retrieve based on additional preferences, need to factor in presets
 	else:
 		start = "Your search: " + query
-		for i in attribute_list:
-			if i:
-				start += ", " + str(i) 
 		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = system.search(query,city)
+		data = system.search(query,city,int(price))
 
 	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
