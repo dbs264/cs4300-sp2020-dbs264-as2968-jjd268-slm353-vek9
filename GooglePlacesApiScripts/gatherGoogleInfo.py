@@ -9,11 +9,11 @@ radius = "10000"
 data_path = "../data/"
 
 def write_lat_long_pairs(city,locations):
-	with open((data_path+city+"_coordinates.json"), 'w') as outfile:
+	with open((data_path+city+"/"+city+"_coordinates.json"), 'w') as outfile:
 		json.dump(locations, outfile)
 
 def read_lat_long_pairs(city):
-	with open(data_path+city+"_coordinates.json") as coords:
+	with open(data_path+city+"/"+city+"_coordinates.json") as coords:
 		return json.load(coords)
 
 def build_place_id_list(locations, city,existing_place_ids=[]):
@@ -49,11 +49,11 @@ def build_place_id_list(locations, city,existing_place_ids=[]):
 	print("There are {} establishments in {}!".format(len(place_ids),city))
 
 
-	with open((data_path+city+"_place_ids.json"), 'w') as outfile:
+	with open((data_path+city+"/"+city+"_place_ids.json"), 'w') as outfile:
 		json.dump(list(place_ids), outfile)
 
 def open_place_id_list(city):
-	with open (data_path+city+"_place_ids.json") as f:
+	with open (data_path+city+"/"+city+"_place_ids.json") as f:
 		place_ids = json.load(f)
 		return place_ids
 
@@ -98,7 +98,7 @@ def build_place_details_list(city):
 			print("{0:.0%} built".format((count/len(place_ids))))
 
 	
-	with open(data_path+city+"_details.json", 'w') as outfile:
+	with open(data_path+city+"/"+city+"_details.json", 'w') as outfile:
 		json.dump(places, outfile)
 
 

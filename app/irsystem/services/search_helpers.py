@@ -50,7 +50,7 @@ def format_output(place_details):
 
 def load_details(city):
 	city = city.lower().replace(" ", "_")
-	with open(data_path+city+"_details.json") as f:
+	with open(data_path+city+"/"+city+"_details.json") as f:
 		return json.load(f)
 
 def sort_by_score(list,k =5):
