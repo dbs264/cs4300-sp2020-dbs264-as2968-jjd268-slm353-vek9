@@ -53,6 +53,12 @@ def load_details(city):
 	with open(data_path+city+"/"+city+"_details.json") as f:
 		return json.load(f)
 
+def load_meta_data(city):
+	city = city.lower().replace(" ", "_")
+	with open(data_path+city+"/"+city+"_meta_data.json") as f:
+		return json.load(f)
+
+
 def sort_by_score(list,k =5):
 	return sorted(list, key = lambda x: x["score"],reverse = True)[:k]
 

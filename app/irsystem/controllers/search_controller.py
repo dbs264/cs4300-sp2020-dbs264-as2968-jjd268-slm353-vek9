@@ -1,7 +1,7 @@
 from . import *  
 from app.irsystem.models.helpers import *
 from app.irsystem.models.helpers import NumpyEncoder as NumpyEncoder
-from app.irsystem.services import initial_search as system
+from app.irsystem.services import cosine_sim_search as system
 from app.irsystem.services import bars_list
 
 project_name = "Club Advisor"
@@ -40,7 +40,7 @@ def suggestions():
 			if i:
 				start += ", " + str(i) 
 		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = system.search_data(query,city)
+		data = system.search(query,city)
 
 	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
@@ -88,7 +88,7 @@ def preference_search():
 			if i:
 				start += ", " + str(i) 
 		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = system.search_data(query,city)
+		data = system.search(query,city)
 
 	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
