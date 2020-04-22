@@ -1,0 +1,107 @@
+<html>
+
+        
+    <form class="form-horizontal" id = "myform">
+        <div id = bars>
+
+
+            <div class="form-group">
+                <input type="text" id="location" name="location" class="form-control" >
+                <label class="form-control-placeholder" for="location">Location</label>
+            </div>
+
+        <!----------------------------------- PREFS ----------------------------------->
+        <div class="form-group">
+            <input type="text" id="bar_name" name = "bar_name" class="form-control" required >
+            <label class="form-control-placeholder" for="search">Bar Name</label>
+        </div>
+
+       
+
+
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary">
+                <input type="radio" name="price" value = "1"> $
+                </label>
+                <label class="btn btn-secondary">
+                <input type="radio"  name="price" value = "2"> $$
+                </label>
+                <label class="btn btn-secondary">
+                <input type="radio" name="price" value = "3"> $$$
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="price" value = "4"> $$$$
+                </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="price" value = "5"> $$$$$
+                </label>
+            </div>
+        </div>
+
+        
+
+    
+        <!----------------------------------- SUBMIT ----------------------------------->
+        <div class="submit-div">
+            <button 
+                id="submit_bar"
+                type="submit" 
+                class="submit btn btn-info " 
+                > lets go. 
+            </button> 
+        </div>
+    </div>
+
+</form>
+ <!----------------------------------- SUGGESTIONS ----------------------------------->
+
+<script>
+
+        function submitHandler3(response){
+                $("#bars").toggle('collapse');
+                $("#reset").css('display','flex')
+                //$("#place_for_search").empty();
+                $("#place_for_suggestions").html(response);
+            }
+          
+
+            $("#submit_bar").click(function(event){
+                event.preventDefault();
+               
+                var city =  $("#city").val();
+                var location =  $("#location").val();
+                var price =  $("input[name='price']:checked").val();
+             
+                var bar_name = $("#bar_name").val();
+            
+
+
+                
+                $.ajax({
+                  url: "/suggestions",
+                  type: "get",
+                  data: {
+                    city: city,
+                    location: location, 
+                    price: price, 
+             
+                    bar_name: bar_name,
+                   
+                },
+                  success: function(response) {
+                    submitHandler3(response);
+                  },
+                  error: function(xhr) {
+                    console.log("ERROR");
+                  }
+                });
+            }); 
+ 
+ </script>
+
+ 
+
+</html>

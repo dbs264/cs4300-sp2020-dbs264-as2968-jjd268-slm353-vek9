@@ -11,19 +11,17 @@ net_id = "Daniel Sanderson: dbs264, Alexander Schmack: as2968, John DeMoully: jj
 def suggestions():
 	query = request.args.get('search')
 	city = request.args.get('city')
+	location = request.args.get('location')
 	price = request.args.get('price')
 	bar_name = request.args.get('bar_name')
-	attribute_list = [request.args.get('attribute1'), request.args.get('attribute2'), request.args.get('attribute3'), request.args.get('attribute4')]
 	
-	if not query:
-		query = ''
-	#if no price entered assuming max price
+
 	if not price:
 		price = 5
 	#if no location entered in a search, dont display results
 	if not city:
 		if query or bar_name:
-			output_message = 'Please enter a location above'
+			output_message = 'Please enter a City'
 			city = "new_york"
 			data = [0]
 		else:
@@ -31,12 +29,12 @@ def suggestions():
 			data = []
 	#if given bar name, retrieve with similar bars
 	elif bar_name:
-		output_message = "Your search: Bars like " + bar_name + " in " + city + " for " + "$" * int(price)
-		data = system.search_data(bar_name,city)
+		output_message = "Your search: Bars like " + bar_name + " in " + location + "(" + city + ") for " + "$" * int(price)
+		data = system.search(bar_name,city,int(price))
 	#retrieve based on additional preferences, need to factor in presets
 	else:
 		start = "Your search: " + query
-		output_message = start + " in " + city + " for " + "$" * int(price)
+		output_message = start + " in " + location + "(" + city + ") for " + "$" * int(price)
 		data = system.search(query,city,int(price))
 
 	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
@@ -57,69 +55,10 @@ def cities():
 
 @irsystem.route('/preference_search')
 def preference_search():
-	query = request.args.get('search')
 	city = request.args.get('city')
-	price = request.args.get('price')
-	bar_name = request.args.get("bar_name")
-	if not query:
-		query = ''
-	#if no price entered assuming max price
-	if not price:
-		price = 5
-	#if no location entered in a search, dont display results
-	if not city:
-		if query or bar_name:
-			output_message = 'Please enter a location above'
-			city = "new_york"
-			data = [0]
-		else:
-			output_message = ''
-			data = []
-	#if given bar name, retrieve with similar bars
-	elif bar_name:
-		output_message = "Your search: Bars like " + bar_name + " in " + city + " for " + "$" * int(price)
-		data = system.search_data(bar_name,city)
-	#retrieve based on additional preferences, need to factor in presets
-	else:
-		start = "Your search: " + query
-		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = system.search(query,city,int(price))
-
-	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
-
+	return render_template('preference_search.html')
 
 @irsystem.route('/bar_search')
 def bar_search():
 	city = request.args.get('city')
-	price = request.args.get('price')
-	bar_name = request.args.get('bar_name')
-	
-	if not query:
-		query = ''
-	#if no price entered assuming max price
-	if not price:
-		price = 5
-	#if no location entered in a search, dont display results
-	if not city:
-		if query or bar_name:
-			output_message = 'Please enter a location above'
-			city = "new_york"
-			data = [0]
-		else:
-			output_message = ''
-			data = []
-	#if given bar name, retrieve with similar bars
-	elif bar_name:
-		output_message = "Your search: Bars like " + bar_name + " in " + city + " for " + "$" * int(price)
-		data = system.search_data(bar_name,city)
-	#retrieve based on additional preferences, need to factor in presets
-	else:
-		start = "Your search: " + query
-		for i in attribute_list:
-			if i:
-				start += ", " + str(i) 
-		output_message = start + " in " + city + " for " + "$" * int(price)
-		data = system.search_data(query,city)
-
-	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
-
+	return render_template('bar_search.html')

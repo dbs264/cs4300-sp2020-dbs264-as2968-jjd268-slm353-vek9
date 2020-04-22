@@ -33,70 +33,39 @@
             <div id="demo">
                         
                 <!-----------------------------------  CITY  ----------------------------------->
+                
                 <div class="form-group">
                     <input type="text" id="city" name="city" class="form-control" value = "New York" required>
                     <label class="form-control-placeholder" for="city">Where to?</label>
                 </div>
 
-                <!-----------------------------------  PRICE ----------------------------------->
-                <div class="form-group">
-                    <label for="price">Price</label>
-                    <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn btn-secondary">
-                        <input type="radio" name="price" value = "1"> $
-                        </label>
-                        <label class="btn btn-secondary">
-                        <input type="radio"  name="price" value = "2"> $$
-                        </label>
-                        <label class="btn btn-secondary">
-                        <input type="radio" name="price" value = "3"> $$$
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="price" value = "4"> $$$$
-                        </label>
-                        <label class="btn btn-secondary">
-                            <input type="radio" name="price" value = "5"> $$$$$
-                        </label>
-                    </div>
-                </div>
-
-                <!----------------------------------- PREFS ----------------------------------->
-                <div class="form-group">
-                    <label for="preferences">Preferences</label>
-
-                    <div class="dropdown bootstrap-select show-tick show" style="color: white;">
-                        <select id="attributes" class="selectpicker " multiple tabindex="-98" data-size="4" data-dropup-auto="false"  >
-                            <option id="attribute1" name="attribute1"  value ="dancing" >Dancing</option>
-                            <option id="attribute2" name="attribute2"  value ="touristy" >Touristy</option>
-                            <option id="attribute3" name="attribute3"  value ="vibey">Vibey</option>
-                            <option id="attribute4" name="attribute4"  value ="strong booze" >Strong Booze</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!----------------------------------- OTHER ----------------------------------->
-                <div class="form-group">
-                    <input type="text" id="search" name = "search" class="form-control" required >
-                    <label class="form-control-placeholder" for="search">Other preferences?</label>
-                </div>
-
-
-                <div class="form-group" style="margin-bottom: -3%;">
-                    <input type="text" id="bar_name" name = "bar_name" class="form-control" required>
-                    <label class="form-control-placeholder" for="bar_name">Search bars similar to...</label>
-                </div>
+                
                             
             
                 <!----------------------------------- SUBMIT ----------------------------------->
                 <div class="submit-div">
                     <button 
-                        id="submit"
+                        id="preference_submit"
                         type="submit" 
                         class="submit btn btn-info " 
-                        > lets go. 
+                        > search by preference 
+                    </button> 
+
+                    <button 
+                    id="bar_submit"
+                    type="submit" 
+                    class="submit btn btn-info " 
+                    > search by bar name 
                     </button> 
                 </div>
+         
+
+            <div class="submit-div">
+                
+                
             </div>
+        </div>
+
 
 
             <!----------------------------------- RESET ----------------------------------->
@@ -113,6 +82,8 @@
         </form>
 
         <!----------------------------------- SUGGESTIONS ----------------------------------->
+        <div id="place_for_search"></div>
+        
         <div id="place_for_suggestions"></div>
 
         <script>
@@ -120,53 +91,29 @@
             $("#reset").click(function(e){
                 $("#demo").toggle('collapse');
                 $("#reset").css('display','none');
+                $("#place_for_search").empty();
                 $("#place_for_suggestions").empty();
             });
 
             function submitHandler(response){
                 $("#demo").toggle('collapse')
-                $("#reset").css('display','flex')
-                $("#place_for_suggestions").html(response);
+                $("#place_for_search").html(response);
             }
 
-            function getAttributes(){
-                list = $("#attributes").val();
-                if (list == null){
-                    list = []
-                }
-                for (var i = list.length ; i < 4; i++){
-                    list[i] = undefined
-                }
-                return list
-            };
-
-            $("#submit").click(function(event){
+            
+            $("#preference_submit").click(function(event){
                 event.preventDefault();
-                var attributes = getAttributes();
+              
                 var city =  $("#city").val();
-                var price =  $("input[name='price']:checked").val();
-                var attribute1 =  attributes[0];
-                var attribute2 =  attributes[1];
-                var attribute3 =  attributes[2];
-                var attribute4 =  attributes[3];
-                var search = $("#search").val();
-                var bar_name = $("#bar_name").val();
 
 
-                console.log(city, price, attribute1, attribute2, attribute3,attribute4, search, bar_name)
-
+        
                 $.ajax({
-                  url: "/suggestions",
+                  url: "/preference_search",
                   type: "get",
                   data: {
                     city: city, 
-                    price: price, 
-                    attribute1: attribute1, 
-                    attribute2: attribute2,
-                    attribute3: attribute3,
-                    attribute4: attribute4,
-                    search: search,
-                    bar_name: bar_name
+                
                 },
                   success: function(response) {
                     submitHandler(response);
@@ -175,7 +122,34 @@
                     console.log("ERROR");
                   }
                 });
-            });
+            }); 
+
+
+            $("#bar_submit").click(function(event){
+                event.preventDefault();
+              
+                var city =  $("#city").val();
+
+
+        
+                $.ajax({
+                  url: "/bar_search",
+                  type: "get",
+                  data: {
+                    city: city, 
+                
+                },
+                  success: function(response) {
+                    submitHandler(response);
+                  },
+                  error: function(xhr) {
+                    console.log("ERROR");
+                  }
+                });
+            }); 
+
+           
+          
         </script>
         
     </body>
