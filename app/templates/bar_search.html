@@ -1,12 +1,13 @@
 <html>
 
-        
+   
     <form class="form-horizontal" id = "myform">
         <div id = bars>
 
+            <h3 class=city_help> Searching for bars in {{city}} </h2>
 
             <div class="form-group">
-                <input type="text" id="location" name="location" class="form-control" >
+                <input type="text" id="location" name="location" class="form-control" placeholder = "ex: East Village, Times Square" >
                 <label class="form-control-placeholder" for="location">Location</label>
             </div>
 
@@ -53,13 +54,23 @@
                 > lets go. 
             </button> 
         </div>
+
+
+        <form class="form-inline global-search" style="color: white;">
+            {{bars}}
+         </form>
+        
     </div>
 
 </form>
- <!----------------------------------- SUGGESTIONS ----------------------------------->
+ 
+ 
 
 <script>
+        var bars_list = "{{bars}}"
 
+        console.log(bars_list)
+        
         function submitHandler3(response){
                 $("#bars").toggle('collapse');
                 $("#reset").css('display','flex')

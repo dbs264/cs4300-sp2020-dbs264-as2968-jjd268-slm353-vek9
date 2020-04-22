@@ -39,26 +39,24 @@ def suggestions():
 
 	return render_template('suggestions.html', name=project_name, netid=net_id, output_message=output_message, data=data)
 
+#initial page with city search
 @irsystem.route('/')
 def search():
 	return render_template('search.html')
 
-#this one should return all of the bars in one city
-@irsystem.route('/cities')
-def cities():
+
+
+
+@irsystem.route('/preference_search')
+def preference_search():
+	city = request.args.get('city')
+	return render_template('preference_search.html', city = city)
+
+@irsystem.route('/bar_search')
+def bar_search():
 	cities_list = ["new_york", "New York"]
 	city = request.args.get('city')
 	bars = []
 	if city in cities_list:
 		bars = bars_list.bars_list_for_city(city)
-	return render_template('search.html')
-
-@irsystem.route('/preference_search')
-def preference_search():
-	city = request.args.get('city')
-	return render_template('preference_search.html')
-
-@irsystem.route('/bar_search')
-def bar_search():
-	city = request.args.get('city')
-	return render_template('bar_search.html')
+	return render_template('bar_search.html', bars = bars, city = city)
