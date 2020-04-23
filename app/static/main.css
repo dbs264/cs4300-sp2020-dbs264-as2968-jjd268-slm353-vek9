@@ -311,19 +311,23 @@ body, html {
 
   .top{
       margin-top: 20px;
-      display: flex;
+      display:flex;
+      width:100%;
   }
   .left{
-      flex-grow: 1;
-      width: 100%;
+      width: 50%;
+      margin-left: 20px;
+      display: inline-block;
+      
   }
   .right{
-      flex-grow: 3;
+      width: 50%;
       margin-right: 20px;
+      display: inline-block;
+      
   }
   .bar_photo{
-      width: 400px;
-      height: 300px;
+    max-width:100%
   }
 
   .review{
