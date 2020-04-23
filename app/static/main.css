@@ -318,6 +318,7 @@ body, html {
       width: 50%;
       margin-left: 20px;
       display: inline-block;
+      text-align: center;
       
   }
   .right{

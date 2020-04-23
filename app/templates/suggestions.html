@@ -14,27 +14,34 @@
                     
                     <p class = output_name> <em> {{d['name']}} </em> </p>
                     <br>
+                    <a href ="{{d['google_url']}}" > {{d['address']}}</a>
+                    <br>
                  
                     <div class = top>
                     <div class = left>
                     <p class = score> Similarity Score: {{d['score']}}</p>
                     {% if d['rating'] %}
+                    <br>
                         <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
                     {% endif %}
                     {% if d['price'] %}
                         <p class = price> {{"$" * d['price']|int}} </p>
                     {% endif %}
+                        <br>
+                    {% if d['distance'] > 0 %}
+                        <p class = distance> Distance from location: {{"%.2f"|format(d['distance']|float)}} miles </p>
+                    {% endif %}
                     <br>
-                    <a href ="{{d['google_url']}}" > {{d['address']}}</a>
                     <br>
+                 
                     {% if d['hours_open'] %}
                     <div class = hours>
-                    <ul>
+                    
                         {% for i in d['hours_open']%}
-                        <li class = day_hours> {{i}} </li>
+                        <p class = day_hours> {{i}} </p>
                         <br>
                         {% endfor %}
-                    </ul>
+                    
                     </div>
                     {% endif %}
                     </div>
