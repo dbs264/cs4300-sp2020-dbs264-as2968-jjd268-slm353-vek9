@@ -141,29 +141,32 @@ color: #34A853;
 }
 
 body, html {
-    background-color: #040D3A!important;
-    height: 100%;
-    margin-bottom: 10%;
+    background-color: #040D3A; 
     font-family: 'Montserrat', sans-serif;
- }
-  
-/* HEADER *****************************************/
-
-.hero-image {
+    margin: 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
-    height: 50%;
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    position: relative;
+ }
+
+.demo {
+  justify-content: center;
+  display: flex;
 }
+  
+/* HEADER *****************************************/
 
 .hero-text {
-    text-align: left;
+    /* text-align: left;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 35%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+    margin-top: 15%;
+    margin-bottom: 15%;
+    text-align: center;
     color: white;
 }
 
@@ -194,13 +197,23 @@ body, html {
 }
 
 /*FORM ******************************************/
+.search-title{
+  padding-top: 10%;
+}
+
+.city_help{
+  text-align: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 22px;
+}
 
  .form-control {
     border-right: none;
     border-top: none;
     border-left: none;
     box-shadow: none;
-    background-color: #040D3A;
+    background-color: transparent;
     border-radius: 0px;
     font-size: 24px;
     height: 7%;
@@ -221,6 +234,14 @@ body, html {
     position: relative;
     display: flex;
   }
+
+/* .form {
+  margin-top: 30%;
+  width: 60%;
+  justify-content: center;
+    text-align: center;
+    display: inline-block;
+} */
 
 /* FLOATING TEXT FIELD ******************************/
 /* CITY, SEARCH, BAR NAME ***************************/
@@ -336,9 +357,28 @@ body, html {
       margin-right:30px;
   }
 
-  .city_help{
-    text-align: center;
-  }
+/* PREVIOUS BUTTON *****************************************/
+.back-button {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  position: absolute;
+  left: 5%
+}
+
+.back-button:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.round {
+  border-radius: 50%;
+}
 
 /* CAROUSEL SUGGESTIONS ************************************/
 

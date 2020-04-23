@@ -3,8 +3,12 @@
    
     <form class="form-horizontal" id = "myform">
         <div id = bars>
-
-            <h3 class=city_help> Searching in {{city}} </h2>
+        
+            <div class="search-title">
+                <a class="back-button previous round" href="/">&#8249;</a>
+                <!-- <button type = "button" id = "previous" class="back-button previous round"> &#8249; </button> -->
+                <div class=city_help> Searching in {{city}} </div>
+            </div>
 
             <div class="form-group">
                 <input type="text" id="location" name="location" class="form-control" placeholder = "ex: East Village, Times Square" >
@@ -14,7 +18,7 @@
         <!----------------------------------- PREFS ----------------------------------->
         <div class="form-group">
            <input type="text" id="bar_name" name = "bar_name" class="form-control" required list = barlist > 
-        <label class="form-control-placeholder" for="bar_name">Bar Name</label>
+            <label class="form-control-placeholder" for="bar_name">Bar Name</label>
     
         <datalist id = barlist>
                 {% for d in bars %}
@@ -26,8 +30,7 @@
 
        
 
-
-
+        <!----------------------------------- PRICE ----------------------------------->
         <div class="form-group">
             <label for="price">Price</label>
             <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -48,10 +51,11 @@
                 </label>
             </div>
         </div>
-
-        
-
     
+        <!----------------------------------- SUBMIT ----------------------------------->
+        <div id = "error" class = "city_help" style="display: none;">
+            Something went wrong. Try checking spelling.
+        </div>
         <!----------------------------------- SUBMIT ----------------------------------->
         <div class="submit-div">
             <button 
@@ -62,8 +66,6 @@
             </button> 
         </div>
 
-
-    
         
     </div>
 
@@ -73,9 +75,7 @@
 
 <script>
         var bars_list = "{{bars}}"
-
-
-        
+      
         function submitHandler3(response){
                 $("#bars").toggle('collapse');
                 $("#reset").css('display','flex')
@@ -84,37 +84,37 @@
             }
           
 
-            $("#submit_bar").click(function(event){
-                event.preventDefault();
-               
-                var city =  $("#city").val();
-                var location =  $("#location").val();
-                var price =  $("input[name='price']:checked").val();
-             
-                var bar_name = $("#bar_name").val();
+        $("#submit_bar").click(function(event){
+            event.preventDefault();
             
-                console.log(bar_name)
+            var city =  $("#city").val();
+            var location =  $("#location").val();
+            var price =  $("input[name='price']:checked").val();
+            
+            var bar_name = $("#bar_name").val();
+        
+            console.log(bar_name)
 
+            
+            $.ajax({
+                url: "/suggestions",
+                type: "get",
+                data: {
+                city: city,
+                location: location, 
+                price: price, 
+                bar_name: bar_name,
                 
-                $.ajax({
-                  url: "/suggestions",
-                  type: "get",
-                  data: {
-                    city: city,
-                    location: location, 
-                    price: price, 
-             
-                    bar_name: bar_name,
-                   
+            },
+                success: function(response) {
+                submitHandler3(response);
                 },
-                  success: function(response) {
-                    submitHandler3(response);
-                  },
-                  error: function(xhr) {
-                    console.log("ERROR");
-                  }
-                });
-            }); 
+                error: function(xhr) {
+                console.log("ERROR");
+                $("#error").css('display','flex')
+                }
+            });
+        }); 
  
  </script>
 

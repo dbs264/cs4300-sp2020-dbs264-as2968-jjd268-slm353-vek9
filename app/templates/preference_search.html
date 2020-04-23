@@ -1,13 +1,12 @@
-<html>
-   
-
-    
+<html >
         
         <form class="form-horizontal" id = "myform">
         <div id = pref>
 
-            <h3 class=city_help> Searching in {{city}} </h2>
-
+            <div class="search-title">
+                <a class="back-button previous round" href="/">&#8249;</a>
+                <div class=city_help> Searching in {{city}} </div>
+            </div>
 
             <div class="form-group">
                 <input type="text" id="location" name="location" class="form-control"  placeholder = "ex: East Village, Times Square" >
@@ -16,14 +15,14 @@
 
         <!----------------------------------- PREFS ----------------------------------->
         <div class="form-group">
-            <input type="text" id="search" name = "search" class="form-control" required  placeholder = "ex: dancing, EDM"  >
+            <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: dancing, EDM"  >
             <label class="form-control-placeholder" for="search">Preferences?</label>
             <!--class="form-control-placeholder"-->
         </div>
 
        
 
-
+        <!----------------------------------- PRICE ----------------------------------->
 
         <div class="form-group">
             <label for="price">Price</label>

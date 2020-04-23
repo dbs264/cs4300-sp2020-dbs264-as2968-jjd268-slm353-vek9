@@ -15,71 +15,66 @@
     </head>
     <body>
 
-        <!--------------------------------------------- HEADER  --------------------------------------------->
-        <div class="header">
-            <div class="hero-image">
+        <div id="demo" class="demo">
+            <div>
+                <!--------------------------------------------- HEADER  --------------------------------------------->
                 <div class="hero-text">
-                  <h1>
-                      <span class="club-text">CLUB</span>
-                      <span class="advisor-text">Advisor</span>
+                    <h1>
+                        <span class="club-text">CLUB</span>
+                        <span class="advisor-text">Advisor</span>
                     </h1>
-                  <p style = "font-size: 30px;">We make going out easy</p>
-                </div>
-              </div>
-        </div>
-
-        <!---------------------------------------------  FORM  --------------------------------------------->
-        <form class="form-horizontal" id = "myform">
-            <div id="demo">
-                        
-                <!-----------------------------------  CITY  ----------------------------------->
-                
-                <div class="form-group">
-                    <input type="text" id="city" name="city" class="form-control" value = "New York" required>
-                    <label class="form-control-placeholder" for="city">Which City?</label>
+                    <p style = "font-size: 30px;">We make going out easy</p>
                 </div>
 
-                
-                            
-            
-                <!----------------------------------- SUBMIT ----------------------------------->
-                <div class="submit-div">
-                    <button 
-                        id="preference_submit"
+                <!---------------------------------------------  FORM  --------------------------------------------->
+                <form class="form-horizontal form" id = "myform">
+
+                                
+                    <!-----------------------------------  CITY  ----------------------------------->
+                    
+                    <div class="form-group">
+                        <input type="text" id="city" name="city" class="form-control" value = "New York" required>
+                        <label class="form-control-placeholder" for="city">Which City?</label>
+                    </div>
+
+                    
+                    <!----------------------------------- SUBMIT ----------------------------------->
+                    <div class="submit-div">
+                        <button 
+                            id="preference_submit"
+                            type="submit" 
+                            class="submit btn btn-info " 
+                            > search by preference 
+                        </button> 
+
+                        <button 
+                        id="bar_submit"
                         type="submit" 
                         class="submit btn btn-info " 
-                        > search by preference 
-                    </button> 
-
-                    <button 
-                    id="bar_submit"
-                    type="submit" 
-                    class="submit btn btn-info " 
-                    > search by bar name 
-                    </button> 
-                </div>
-         
-
-            <div class="submit-div">
+                        > search by bar name 
+                        </button> 
+                    </div>
                 
-                
+
+                    <div class="submit-div"></div>
+
+                </form>
+        
+
             </div>
+
         </div>
 
 
-
-            <!----------------------------------- RESET ----------------------------------->
-            <div class="submit-div" >
-                <button 
-                    style="display: none;"
-                    id="reset"
-                    type="reset" 
-                    class="submit btn btn-info " 
-                    > restart! 
-                </button> 
-            </div>
-
-        </form>
+        <!----------------------------------- RESET ----------------------------------->
+        <div class="submit-div" >
+            <button 
+                style="display: none;"
+                id="reset"
+                class="submit btn btn-info " 
+                > restart! 
+            </button> 
+        </div>
 
         <!----------------------------------- SUGGESTIONS ----------------------------------->
         <div id="place_for_search"></div>
@@ -92,11 +87,14 @@
                 $("#demo").toggle('collapse');
                 $("#reset").css('display','none');
                 $("#place_for_search").empty();
+                $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
                 $("#place_for_suggestions").empty();
             });
 
             function submitHandler(response){
-                $("#demo").toggle('collapse')
+                $("#demo").toggle('collapse');
+                $("#reset").css('display','none');
+                $("body").css('background-image', 'none');
                 $("#place_for_search").html(response);
             }
 
@@ -105,8 +103,6 @@
                 event.preventDefault();
               
                 var city =  $("#city").val();
-
-
         
                 $.ajax({
                   url: "/preference_search",
