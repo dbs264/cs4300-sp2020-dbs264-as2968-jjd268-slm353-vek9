@@ -6,17 +6,15 @@
 
     </div>
 
-
-
+    <div class="search-title">
+        <button id="submit-back" type="button"  class="back-button previous  " > &#8249; Back to Home </button> 
+        <div id = "city-help" class=city-help> Searching in {{city}} </div>
+    </div>
    
     <form class="form-horizontal" id = "myform">
         <div id = bars>
         
-            <div class="search-title">
-                <a class="back-button previous round" href="/">&#8249;</a>
-                <!-- <button type = "button" id = "previous" class="back-button previous round"> &#8249; </button> -->
-                <div class=city_help> Searching in {{city}} </div>
-            </div>
+
 
             <div class="form-group">
                 <input type="text" id="location" name="location" class="form-control" placeholder = "ex: East Village, Times Square" >
@@ -39,6 +37,7 @@
        
 
         <!----------------------------------- PRICE ----------------------------------->
+        
         <div class="form-group">
             <label for="price">Price</label>
             <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
@@ -60,29 +59,21 @@
             </div>
         </div>
     
-        <!----------------------------------- SUBMIT ----------------------------------->
+        <!----------------------------------- ERROR ----------------------------------->
         <div id = "error" class = "city_help" style="display: none;">
             Something went wrong. Try checking spelling.
         </div>
         <!----------------------------------- SUBMIT ----------------------------------->
         <div class="submit-div">
-            <!-- <button 
-                id="submit-back"
-                type="submit" 
-                class="submit btn btn-info " 
-                > back 
-            </button>  -->
-
             <button 
                 id="submit_bar"
                 type="submit" 
                 class="submit btn btn-info " 
-                > lets go! 
+                > lets go. 
             </button> 
             
         </div>
 
-        
 
     </div>
 
@@ -96,47 +87,47 @@
             </button> 
         </div>
 
-
-    
-        
 </form>
  
  
 
 <script>
         var bars_list = "{{bars}}"
-
-
-        $("#reset-bars").click(function(e){
-                $("#bars").toggle('collapse');
-                $("#reset-bars").css('display','none');
-                $("#place_for_suggestions").empty();
-            });
-
-        $("#submit-back").click(function(e){
-                e.preventDefault();
-                $("#demo").toggle('collapse');
-                $("#place_for_search").empty();
-            });
-          
         
         function submitHandler3(response){
                 $("#bars").toggle('collapse');
                 $("#reset-bars").css('display','flex')
                 //$("#place_for_search").empty();
+                $("#city-help").css('display','none')
+
                 $("#place_for_suggestions").html(response);
             }
+
+        $("#reset-bars").click(function(e){
+                $("#bars").toggle('collapse');
+                $("#reset-bars").css('display','none');
+                $("#city-help").css('display','flex')
+                $("#place_for_suggestions").empty();
+            });
+
+        $("#submit-back").click(function(e){
+            e.preventDefault();
+            $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
+            $("#demo").toggle('collapse');
+            $("#place_for_search").empty();
+            $("#place_for_suggestions").empty();      
+          });
+
           
 
         $("#submit_bar").click(function(event){
             event.preventDefault();
-            
             var city =  $("#city").val();
             var location =  $("#location").val();
             var price =  $("input[name='price']:checked").val();
             
             var bar_name = $("#bar_name").val();
-        
+            
             console.log(bar_name)
 
             
@@ -151,7 +142,7 @@
                 
             },
                 success: function(response) {
-                submitHandler3(response);
+                    submitHandler3(response);
                 },
                 error: function(xhr) {
                 console.log("ERROR");
