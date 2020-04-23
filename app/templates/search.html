@@ -16,6 +16,8 @@
     <body>
 
         <!--------------------------------------------- HEADER  --------------------------------------------->
+        <div id="demo">
+        
         <div class="header">
             <div class="hero-image">
                 <div class="hero-text">
@@ -30,7 +32,7 @@
 
         <!---------------------------------------------  FORM  --------------------------------------------->
         <form class="form-horizontal" id = "myform">
-            <div id="demo">
+            
                         
                 <!-----------------------------------  CITY  ----------------------------------->
                 
@@ -68,7 +70,7 @@
 
 
 
-            <!----------------------------------- RESET ----------------------------------->
+            <!----------------------------------- RESET ---------------------------------
             <div class="submit-div" >
                 <button 
                     style="display: none;"
@@ -79,7 +81,7 @@
                 </button> 
             </div>
 
-        </form>
+        </form> -->
 
         <!----------------------------------- SUGGESTIONS ----------------------------------->
         <div id="place_for_search"></div>
@@ -88,12 +90,12 @@
 
         <script>
 
-            $("#reset").click(function(e){
+            /*$("#reset").click(function(e){
                 $("#demo").toggle('collapse');
                 $("#reset").css('display','none');
                 $("#place_for_search").empty();
                 $("#place_for_suggestions").empty();
-            });
+            });*/
 
             function submitHandler(response){
                 $("#demo").toggle('collapse')
