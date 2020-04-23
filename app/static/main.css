@@ -141,7 +141,7 @@ color: #34A853;
 }
 
 body, html {
-    background-color: #040D3A; 
+    background-color: #040D3A!important; 
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
@@ -319,7 +319,7 @@ body, html {
 
   .result_container{
     width: 90%;
-    border: 10px solid white;
+    /* border: 10px solid white; */
     margin-left: 30px auto;
     margin-right: 30px auto;
     background-color: #A2AEF4;
@@ -343,8 +343,9 @@ body, html {
 
   .top{
       margin-top: 20px;
-      display:flex;
       width:100%;
+      text-align: center;
+      justify-content: center;
   }
   .left{
       width: 50%;
@@ -360,11 +361,13 @@ body, html {
       
   }
   .bar_photo{
-    max-width:100%
+    max-width:100%;
+    max-height: 250px;
+    margin: 10px;
   }
 
   .review{
-   
+      margin: 10px;
       margin-right:30px;
   }
 
@@ -393,7 +396,7 @@ body, html {
 
 /* CAROUSEL SUGGESTIONS ************************************/
 
-/* 
+
   .container-fluid{
     margin-top:2%;
     margin-bottom:8%;
@@ -417,11 +420,36 @@ body, html {
   .container-multi .content {
     position: absolute; 
     bottom: 0; 
-    background: rgb(0, 0, 0); 
     background: rgba(0, 0, 0, 0.5); 
     color: #f1f1f1; 
     width: 100%; 
-    padding: 20px; 
     font-family: 'Montserrat', sans-serif;
 
+  }
+
+/* CAROUSEL MODALS ************************************/
+
+  .close-margin {
+    margin: -2rem 1rem -1rem auto !important;
+    color:white!important;
+    opacity: 1!important;
+  }
+  .close-margin:hover{
+    color: grey!important;
+  }
+  .modal-content{
+    border-radius: 0!important;
+    width: 100%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.85)!important;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+/* 
+  .modal-dialog{
+      overflow-y: initial
+  } */
+  /* .modal-body{
+      height: 525px;
+      overflow-y: auto;
   } */

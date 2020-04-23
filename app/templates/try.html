@@ -2,6 +2,7 @@
 
 
 <head>
+<link rel="stylesheet" href="/static/main.css">
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -141,33 +142,13 @@
                 <div class="item" >
                     <div class="container-multi">
                         {% if d['photo_url'] %}
-                        <img src = "{{d['photo_url']}}" style="height: 50%;width: 100%;"alt="img1" data-toggle="modal" data-target="#modal"> </img>
+                        <img src = "{{d['photo_url']}}" style="height: 50%;width: 100%;"alt="img1" data-toggle="modal" data-target="#modal_{{num}}"> </img>
                         {% endif %}                            
                         <div class="content">
                             <h1>{{d['name']}}</h1>
                         </div>
                     </div>
                 </div>
-
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          ...
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 {% endfor %}
 
             </div>
@@ -176,6 +157,153 @@
         </div>
 	</div>
 </div>
-{%endif%}
+        {% for d in data %} 
+        {% set num = loop.index %}
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-lg" id="modal_{{num}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title output_name" id="exampleModalLongTitle"><em> {{d['name']}} </em></h5>
+                            <button type="button" class="close close-margin" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <div class = "result_container"> -->
+                                             
+                                <div class = top>
+                                    <!-- <div class = left>
+                                        <p class = score> Similarity Score: {{d['score']}}</p>
+                                        {% if d['rating'] %}
+                                        
+                                            <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
+                                        {% endif %}
+                                        {% if d['price'] %}
+                                            <p class = price> {{"$" * d['price']|int}} </p>
+                                        {% endif %}
+                                        {% if d['distance'] > 0 %}
+                                            <p class = distance> Distance from location: {{"%.2f"|format(d['distance']|float)}} miles </p>
+                                        {% endif %}
 
+                                    
+                                        {% if d['hours_open'] %}
+                                        <div class = hours>
+                                        
+                                            {% for i in d['hours_open']%}
+                                            <p class = day_hours> {{i}} </p>
+                                            {% endfor %}
+                                        
+                                        </div>
+                                        {% endif %}
+                                    </div> -->
+                                    <div>
+                                    {% if d['photo_url'] %}
+                                        <img src = "{{d['photo_url']}}" class = bar_photo> </img>
+                                    {% endif %}
+                                    </div>
+                                    <div>
+                                        <a href ="{{d['google_url']}}" > {{d['address']}}</a>
+                                    </div>
+
+                                </div>
+
+                                {% if d['reviews'] %}
+                                <div class = reviews>
+                                <ul style="list-style-type:none">
+                
+                                    {% if d['reviews'][0] %}
+                                        <li id = rev1 class = "review active {{num}}"> " {{d['reviews'][0]}} "</li>
+                             
+                                    {% endif %}
+                                    {% if d['reviews'][1] %}
+                                        <li id = rev2 class = "review hidden {{num}}"> " {{d['reviews'][1]}} "</li>
+                                  
+                                    {% endif %}
+                                    {% if d['reviews'][2] %}
+                                        <li id = rev3 class = "review hidden {{num}}"> " {{d['reviews'][2]}} "</li>
+                              
+                                    {% endif %}
+                                    {% if d['reviews'][3] %}
+                                        <li id = rev4 class = "review hidden {{num}}"> " {{d['reviews'][3]}} "</li>
+                                      
+                                    {% endif %}
+                                    {% if d['reviews'][4] %}
+                                        <li id = rev5 class = "review hidden {{num}}" > " {{d['reviews'][4]}} "</li>
+                                    
+                                    {% endif %}
+                                    <!--{% for i in d['reviews']%}
+                                    <li class = review> " {{i}} "</li>
+                                    <br> 
+                                   
+                                    {% endfor %}--> 
+                                    
+                                </ul>
+                                </div>
+                                
+                                <br>
+                
+                                <a class = "prev {{num}}" onclick="slides(-1, '{{num}}')"  > &#10094; </a>
+                                <a class = "next {{num}}" onclick="slides(1, '{{num}}')"  > &#10095; </a>
+                                
+                                {% endif %}
+                             
+                            <!-- </div> -->
+                        </div>
+                        <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div> -->
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+{%endif%}
+    <script>
+          
+             
+          function slides(n, num){
+                    //let revs = ["rev1", "rev2", "rev3", "rev4", "rev5"] 
+                    let revs = document.getElementsByClassName("review " + num + "")
+                   
+                    if (n == 1){
+                        for (i = 0; i<revs.length; i+=1){
+                
+                            if (revs[i].className == "review active " + num ){
+                                if(i == revs.length-1){
+                                    revs[i].className = "review hidden " + num
+                                    revs[0].className = "review active " + num
+                                    break
+                                }else{
+                                    revs[i].className = "review hidden " + num 
+                                    revs[i+1].className = "review active " + num 
+                                    break
+                                }
+                        }
+                            
+                        }
+                    }
+                    if (n == -1){
+                        for (i = 0; i<revs.length; i+=1){
+                
+                            if (revs[i].className == "review active " + num ){
+                                if(i == 0){
+                                    revs[i].className = "review hidden " + num
+                                    revs[revs.length-1].className = "review active " + num
+                                    break
+                                }else{
+                                    revs[i].className = "review hidden " + num 
+                                    revs[i-1].className = "review active " + num 
+                                    break
+                                }
+                        }
+                            
+                        }
+                    }
+                    
+                    
+                    }
+
+    </script>
 </html>
