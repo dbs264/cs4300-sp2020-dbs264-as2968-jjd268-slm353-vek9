@@ -68,9 +68,18 @@ def load_meta_data(city):
         return json.load(f)
 
 
+def load_details_with_clusters(city):
+    city = city.lower().replace(" ", "_")
+    with open(data_path+city+"/"+city+"_details_with_clusters.json") as f:
+        return json.load(f)
+
+
 def sort_by_score(list, k=5):
     return sorted(list, key=lambda x: x["score"], reverse=True)[:k]
 
 
-def filter_by_attributes(details, price):
-    return list(filter(lambda x: int(x["price_level"]) <= price if "price_level" in x else False, details))
+def filter_by_attributes(details, price, cluster=None):
+    if cluster:
+        return list(filter(lambda x: (int(x["price_level"]) <= price and x["cluster"] == cluster) if "price_level" in x else False, details))
+    else:
+        return list(filter(lambda x: int(x["price_level"]) <= price if "price_level" in x else False, details))
