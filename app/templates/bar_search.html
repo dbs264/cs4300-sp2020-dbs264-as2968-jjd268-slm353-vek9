@@ -13,8 +13,15 @@
 
         <!----------------------------------- PREFS ----------------------------------->
         <div class="form-group">
-            <input type="text" id="bar_name" name = "bar_name" class="form-control" required >
-            <label class="form-control-placeholder" for="search">Bar Name</label>
+           <input type="text" id="bar_name" name = "bar_name" class="form-control" required list = barlist > 
+        <label class="form-control-placeholder" for="bar_name">Bar Name</label>
+    
+        <datalist id = barlist>
+                {% for d in bars %}
+                    <option value = "{{d}}">
+                {% endfor %}
+            </datalist>
+
         </div>
 
        
@@ -56,9 +63,7 @@
         </div>
 
 
-        <form class="form-inline global-search" style="color: white;">
-            {{bars}}
-         </form>
+    
         
     </div>
 
@@ -69,7 +74,7 @@
 <script>
         var bars_list = "{{bars}}"
 
-        console.log(bars_list)
+
         
         function submitHandler3(response){
                 $("#bars").toggle('collapse');
@@ -88,7 +93,7 @@
              
                 var bar_name = $("#bar_name").val();
             
-
+                console.log(bar_name)
 
                 
                 $.ajax({

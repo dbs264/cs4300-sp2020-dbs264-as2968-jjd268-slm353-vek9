@@ -33,6 +33,8 @@ def suggestions():
 		data = system.search(bar_name,city,int(price))
 	#retrieve based on additional preferences, need to factor in presets
 	else:
+		if not query:
+			query = ''
 		start = "Your search: " + query
 		output_message = start + " in " + location + "(" + city + ") for " + "$" * int(price)
 		data = system.search(query,city,int(price))
