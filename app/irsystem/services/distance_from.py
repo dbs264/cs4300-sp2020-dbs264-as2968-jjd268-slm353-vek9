@@ -29,4 +29,4 @@ def add_distances(details, location_string):
 
 def update_scores_for_distance(details):
     for place in details:
-        place["score"] = place["score"]/math.log(place["distance"]+1.1)
+        place["score"] = (place["score"]+.1)/math.log(place["distance"]+1.1)
