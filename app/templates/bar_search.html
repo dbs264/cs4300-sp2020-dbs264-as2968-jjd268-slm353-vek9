@@ -1,5 +1,16 @@
 <html>
 
+    <!-- <div class="header"> -->
+        <!-- <div class="hero-image-form"> -->
+            <div class="hero-text hero-text-vertical">
+                  <span class="club-text">CLUB</span>
+                  <span class="advisor-text">Advisor</span>
+       
+            </div>
+          <!-- </div> -->
+    <!-- </div> -->
+
+
    
     <form class="form-horizontal" id = "myform">
         <div id = bars>
@@ -58,27 +69,63 @@
         </div>
         <!----------------------------------- SUBMIT ----------------------------------->
         <div class="submit-div">
+            <!-- <button 
+                id="submit-back"
+                type="submit" 
+                class="submit btn btn-info " 
+                > back 
+            </button>  -->
+
             <button 
                 id="submit_bar"
                 type="submit" 
                 class="submit btn btn-info " 
-                > lets go. 
+                > lets go! 
             </button> 
+            
         </div>
 
         
+
     </div>
 
+        <div class="submit-div-reset" >
+            <button 
+                style="display: none;"
+                id="reset-bars"
+                type="reset" 
+                class="submit btn btn-info " 
+                > search again! 
+            </button> 
+        </div>
+
+
+    
+        
 </form>
  
  
 
 <script>
         var bars_list = "{{bars}}"
-      
+
+
+        $("#reset-bars").click(function(e){
+                $("#bars").toggle('collapse');
+                $("#reset-bars").css('display','none');
+                $("#place_for_suggestions").empty();
+            });
+
+        $("#submit-back").click(function(e){
+                e.preventDefault();
+                $("#demo").toggle('collapse');
+                $("#place_for_search").empty();
+            });
+          
+        
         function submitHandler3(response){
                 $("#bars").toggle('collapse');
-                $("#reset").css('display','flex')
+                $("#reset-bars").css('display','flex')
                 //$("#place_for_search").empty();
                 $("#place_for_suggestions").html(response);
             }

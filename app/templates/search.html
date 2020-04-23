@@ -18,7 +18,7 @@
         <div id="demo" class="demo">
             <div>
                 <!--------------------------------------------- HEADER  --------------------------------------------->
-                <div class="hero-text">
+                <div class="hero-text hero-text-search">
                     <h1>
                         <span class="club-text">CLUB</span>
                         <span class="advisor-text">Advisor</span>
@@ -67,14 +67,14 @@
 
 
         <!----------------------------------- RESET ----------------------------------->
-        <div class="submit-div" >
+        <!-- <div class="submit-div" >
             <button 
                 style="display: none;"
                 id="reset"
                 class="submit btn btn-info " 
                 > restart! 
             </button> 
-        </div>
+        </div> -->
 
         <!----------------------------------- SUGGESTIONS ----------------------------------->
         <div id="place_for_search"></div>
@@ -83,18 +83,20 @@
 
         <script>
 
-            $("#reset").click(function(e){
+            /*$("#reset").click(function(e){
                 $("#demo").toggle('collapse');
                 $("#reset").css('display','none');
                 $("#place_for_search").empty();
                 $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
                 $("#place_for_suggestions").empty();
-            });
+            });*/
 
             function submitHandler(response){
                 $("#demo").toggle('collapse');
                 $("#reset").css('display','none');
                 $("body").css('background-image', 'none');
+                $("html").css('background-image', 'none');
+
                 $("#place_for_search").html(response);
             }
 

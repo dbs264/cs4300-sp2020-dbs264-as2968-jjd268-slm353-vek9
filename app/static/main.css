@@ -158,16 +158,27 @@ body, html {
   
 /* HEADER *****************************************/
 
+.hero-image-form {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
+  height: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
 .hero-text {
-    /* text-align: left;
-    position: absolute;
-    top: 20%;
-    left: 35%;
-    transform: translate(-50%, -50%); */
-    margin-top: 15%;
-    margin-bottom: 15%;
     text-align: center;
     color: white;
+}
+.hero-text-vertical{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg');
+  height: 20%;
+  line-height: 2;
+}
+.hero-text-search {
+  margin-top: 15%;
+  margin-bottom: 15%;
 }
 
 .club-text {
@@ -198,7 +209,7 @@ body, html {
 
 /*FORM ******************************************/
 .search-title{
-  padding-top: 10%;
+  padding-top: 5%;
 }
 
 .city_help{
@@ -230,18 +241,10 @@ body, html {
 
 
 .form-horizontal .form-group{
-    margin: 5%;
+    margin: 5%; 
     position: relative;
     display: flex;
   }
-
-/* .form {
-  margin-top: 30%;
-  width: 60%;
-  justify-content: center;
-    text-align: center;
-    display: inline-block;
-} */
 
 /* FLOATING TEXT FIELD ******************************/
 /* CITY, SEARCH, BAR NAME ***************************/
@@ -294,8 +297,16 @@ body, html {
     font-family: 'Major Mono Display', monospace;
   }
 
+  .submit-div-reset{
+    margin-top: 5%;
+    display: flex; 
+    justify-content: center;
+    font-family: 'Major Mono Display', monospace;
+  }
+
   .submit{
-    margin: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
     font-size: 20px!important
   }
 

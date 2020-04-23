@@ -20,8 +20,9 @@
                     <div class = top>
                     <div class = left>
                     <p class = score> Similarity Score: {{d['score']}}</p>
-                    {% if d['rating'] %}
                     <br>
+                    {% if d['rating'] %}
+                    
                         <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
                     {% endif %}
                     {% if d['price'] %}
