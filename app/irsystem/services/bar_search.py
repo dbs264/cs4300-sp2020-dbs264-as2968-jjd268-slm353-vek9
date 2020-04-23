@@ -34,7 +34,10 @@ def search(bar_name, city, price, location_string):
         details = distance_from.add_distances(details, location_string)
         distance_from.update_scores_for_distance(details)
 
-    top_results = helpers.sort_by_score(
-        helpers.filter_by_attributes(details, price, bar_cluster))
+    filtered_results = helpers.filter_by_attributes(
+        details, price, bar_cluster)
+    filtered_results = list(filter(lambda x:
+                                   x["name"] != bar_name, filtered_results))
+    top_results = helpers.sort_by_score(filtered_results)
 
     return [helpers.format_output(x) for x in top_results]
