@@ -19,116 +19,8 @@
     
     .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
 </style>
-<script>
-    $(document).ready(function () {
-    var itemsMainDiv = ('.MultiCarousel');
-    var itemsDiv = ('.MultiCarousel-inner');
-    var itemWidth = "";
 
-    $('.leftLst, .rightLst').click(function () {
-        var condition = $(this).hasClass("leftLst");
-        if (condition)
-            click(0, this);
-        else
-            click(1, this)
-    });
-
-    ResCarouselSize();
-
-    $(window).resize(function () {
-        ResCarouselSize();
-    });
-
-    //this function define the size of the items
-    function ResCarouselSize() {
-        var incno = 0;
-        var dataItems = ("data-items");
-        var itemClass = ('.item');
-        var id = 0;
-        var btnParentSb = '';
-        var itemsSplit = '';
-        var sampwidth = $(itemsMainDiv).width();
-        var bodyWidth = $('body').width();
-        $(itemsDiv).each(function () {
-            id = id + 1;
-            var itemNumbers = $(this).find(itemClass).length;
-            btnParentSb = $(this).parent().attr(dataItems);
-            itemsSplit = btnParentSb.split(',');
-            $(this).parent().attr("id", "MultiCarousel" + id);
-
-            if (bodyWidth >= 1200) {
-
-                incno = itemsSplit[3];
-                itemWidth = sampwidth / 2;
-            }
-            else if (bodyWidth >= 992) {
-
-                incno = itemsSplit[2];
-                itemWidth = sampwidth / 2;
-            }
-            else if (bodyWidth >= 768) {
-
-                incno = itemsSplit[1];
-                itemWidth = sampwidth / 2;
-            }
-            else {
-                incno = itemsSplit[0];
-
-                itemWidth = sampwidth / 2;
-            }
-            $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
-            $(this).find(itemClass).each(function () {
-                $(this).outerWidth(itemWidth);
-            });
-
-            $(".leftLst").addClass("over");
-            $(".rightLst").removeClass("over");
-
-        });
-    }
-
-
-    //this function used to move the items
-    function ResCarousel(e, el, s) {
-        var leftBtn = ('.leftLst');
-        var rightBtn = ('.rightLst');
-        var translateXval = '';
-        var divStyle = $(el + ' ' + itemsDiv).css('transform');
-        var values = divStyle.match(/-?[\d\.]+/g);
-        var xds = Math.abs(values[4]);
-        if (e == 0) {
-            translateXval = parseInt(xds) - parseInt(itemWidth * s);
-            $(el + ' ' + rightBtn).removeClass("over");
-
-            if (translateXval <= itemWidth / 2) {
-                translateXval = 0;
-                $(el + ' ' + leftBtn).addClass("over");
-            }
-        }
-        else if (e == 1) {
-            var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
-            translateXval = parseInt(xds) + parseInt(itemWidth * s);
-            $(el + ' ' + leftBtn).removeClass("over");
-
-            if (translateXval >= itemsCondition - itemWidth / 2) {
-                translateXval = itemsCondition;
-                $(el + ' ' + rightBtn).addClass("over");
-            }
-        }
-        $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
-    }
-
-    //It is used to get some elements from btn
-    function click(ell, ee) {
-        var Parent = "#" + $(ee).parent().attr("id");
-        var slide = $(Parent).attr("data-slide");
-        ResCarousel(ell, Parent, slide);
-    }
-
-});
-</script>
-
-
+<body>
 {% if data %}
 <div class="output-message">{{output_message}}</div>
 
@@ -162,107 +54,223 @@
                 <!-- Modal -->
                 <div class="modal fade bd-example-modal-lg" id="modal_{{num}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title output_name" id="exampleModalLongTitle"><em> {{d['name']}} </em></h5>
-                            <button type="button" class="close close-margin" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- <div class = "result_container"> -->
-                                             
-                                <div class = top>
-                                    <!-- <div class = left>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title output_name" style="display: inline-block;"id="exampleModalLongTitle"><em> 
+                                    {{d['name']}}{% if d['price'] %}, {{"$" * d['price']|int}}{% endif %}
+                                </em></h5>
+                                {% if d['rating'] %}
+                                    <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
+                                {% endif %}
+                                <div>
+                                    <a href ="{{d['google_url']}}" > {{d['address']}}</a>
+                                </div>
+                                <button type="button" class="close close-margin" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                                
+                                    <div class = top>
+                                        {% if d['photo_url'] %}
+                                            <img src = "{{d['photo_url']}}" class = bar_photo> </img>
+                                        {% endif %}
                                         <p class = score> Similarity Score: {{d['score']}}</p>
-                                        {% if d['rating'] %}
                                         
-                                            <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
-                                        {% endif %}
-                                        {% if d['price'] %}
-                                            <p class = price> {{"$" * d['price']|int}} </p>
-                                        {% endif %}
                                         {% if d['distance'] > 0 %}
                                             <p class = distance> Distance from location: {{"%.2f"|format(d['distance']|float)}} miles </p>
                                         {% endif %}
+                                    </div>
 
-                                    
-                                        {% if d['hours_open'] %}
-                                        <div class = hours>
-                                        
+                                    {% if d['hours_open'] %}
+
+                                    <button class="accordion">Hours</button>
+                                    <div class="panel">
+                                        <table class="table" style="color: white;">
+                                            <tbody>
                                             {% for i in d['hours_open']%}
-                                            <p class = day_hours> {{i}} </p>
+                                                <tr>
+                                                    <td>{{i}}</td>
+                                                </tr>
                                             {% endfor %}
+
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                    {% endif %}
+
+                                    <button class="accordion">Reviews</button>
+                                    <div class="panel">
+                                        {% if d['reviews'] %}
+                                        <div class = "review">
+
+                                            <a class = "review-button prev {{num}}" onclick="slides(-1, '{{num}}')"  > &#10094; </a>
+
+                                            <ul style="list-style-type:none">
+                            
+                                                {% if d['reviews'][0] %}
+                                                    <li id = rev1 class = "review active {{num}}"> " {{d['reviews'][0]}} "</li>
                                         
-                                        </div>
+                                                {% endif %}
+                                                {% if d['reviews'][1] %}
+                                                    <li id = rev2 class = "review hidden {{num}}"> " {{d['reviews'][1]}} "</li>
+                                            
+                                                {% endif %}
+                                                {% if d['reviews'][2] %}
+                                                    <li id = rev3 class = "review hidden {{num}}"> " {{d['reviews'][2]}} "</li>
+                                        
+                                                {% endif %}
+                                                {% if d['reviews'][3] %}
+                                                    <li id = rev4 class = "review hidden {{num}}"> " {{d['reviews'][3]}} "</li>
+                                                
+                                                {% endif %}
+                                                {% if d['reviews'][4] %}
+                                                    <li id = rev5 class = "review hidden {{num}}" > " {{d['reviews'][4]}} "</li>
+                                                
+                                                {% endif %}
+                                                    
+                                                <!-- {% for i in d['reviews']%}
+                                                <li class = review> " {{i}} "</li>
+                                                <br> 
+                                                {% endfor %}  -->
+                                                
+                                            </ul>
+                                            <a class = "review-button next {{num}}" onclick="slides(1, '{{num}}')"  > &#10095; </a>
+
+                                        </div>                               
                                         {% endif %}
-                                    </div> -->
-                                    <div>
-                                    {% if d['photo_url'] %}
-                                        <img src = "{{d['photo_url']}}" class = bar_photo> </img>
-                                    {% endif %}
-                                    </div>
-                                    <div>
-                                        <a href ="{{d['google_url']}}" > {{d['address']}}</a>
-                                    </div>
-
-                                </div>
-
-                                {% if d['reviews'] %}
-                                <div class = reviews>
-                                <ul style="list-style-type:none">
-                
-                                    {% if d['reviews'][0] %}
-                                        <li id = rev1 class = "review active {{num}}"> " {{d['reviews'][0]}} "</li>
-                             
-                                    {% endif %}
-                                    {% if d['reviews'][1] %}
-                                        <li id = rev2 class = "review hidden {{num}}"> " {{d['reviews'][1]}} "</li>
-                                  
-                                    {% endif %}
-                                    {% if d['reviews'][2] %}
-                                        <li id = rev3 class = "review hidden {{num}}"> " {{d['reviews'][2]}} "</li>
-                              
-                                    {% endif %}
-                                    {% if d['reviews'][3] %}
-                                        <li id = rev4 class = "review hidden {{num}}"> " {{d['reviews'][3]}} "</li>
-                                      
-                                    {% endif %}
-                                    {% if d['reviews'][4] %}
-                                        <li id = rev5 class = "review hidden {{num}}" > " {{d['reviews'][4]}} "</li>
-                                    
-                                    {% endif %}
-                                    <!--{% for i in d['reviews']%}
-                                    <li class = review> " {{i}} "</li>
-                                    <br> 
-                                   
-                                    {% endfor %}--> 
-                                    
-                                </ul>
-                                </div>
-                                
-                                <br>
-                
-                                <a class = "prev {{num}}" onclick="slides(-1, '{{num}}')"  > &#10094; </a>
-                                <a class = "next {{num}}" onclick="slides(1, '{{num}}')"  > &#10095; </a>
-                                
-                                {% endif %}
-                             
-                            <!-- </div> -->
+                                </div>  
+                            </div>
                         </div>
-                        <!-- <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div> -->
-                    </div>
                     </div>
                 </div>
             {% endfor %}
 
-{%endif%}
+    {%endif%}
+</body> 
     <script>
+
+        $(document).ready(function () {
+        var itemsMainDiv = ('.MultiCarousel');
+        var itemsDiv = ('.MultiCarousel-inner');
+        var itemWidth = "";
+    
+        $('.leftLst, .rightLst').click(function () {
+            var condition = $(this).hasClass("leftLst");
+            if (condition)
+                click(0, this);
+            else
+                click(1, this)
+        });
+    
+        ResCarouselSize();
+    
+        $(window).resize(function () {
+            ResCarouselSize();
+        });
+    
+        //this function define the size of the items
+        function ResCarouselSize() {
+            var incno = 0;
+            var dataItems = ("data-items");
+            var itemClass = ('.item');
+            var id = 0;
+            var btnParentSb = '';
+            var itemsSplit = '';
+            var sampwidth = $(itemsMainDiv).width();
+            var bodyWidth = $('body').width();
+            $(itemsDiv).each(function () {
+                id = id + 1;
+                var itemNumbers = $(this).find(itemClass).length;
+                btnParentSb = $(this).parent().attr(dataItems);
+                itemsSplit = btnParentSb.split(',');
+                $(this).parent().attr("id", "MultiCarousel" + id);
+    
+                if (bodyWidth >= 1200) {
+    
+                    incno = itemsSplit[3];
+                    itemWidth = sampwidth / 2;
+                }
+                else if (bodyWidth >= 992) {
+    
+                    incno = itemsSplit[2];
+                    itemWidth = sampwidth / 2;
+                }
+                else if (bodyWidth >= 768) {
+    
+                    incno = itemsSplit[1];
+                    itemWidth = sampwidth / 2;
+                }
+                else {
+                    incno = itemsSplit[0];
+    
+                    itemWidth = sampwidth / 2;
+                }
+                $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
+                $(this).find(itemClass).each(function () {
+                    $(this).outerWidth(itemWidth);
+                });
+    
+                $(".leftLst").addClass("over");
+                $(".rightLst").removeClass("over");
+    
+            });
+        }
+    
+    
+        //this function used to move the items
+        function ResCarousel(e, el, s) {
+            var leftBtn = ('.leftLst');
+            var rightBtn = ('.rightLst');
+            var translateXval = '';
+            var divStyle = $(el + ' ' + itemsDiv).css('transform');
+            var values = divStyle.match(/-?[\d\.]+/g);
+            var xds = Math.abs(values[4]);
+            if (e == 0) {
+                translateXval = parseInt(xds) - parseInt(itemWidth * s);
+                $(el + ' ' + rightBtn).removeClass("over");
+    
+                if (translateXval <= itemWidth / 2) {
+                    translateXval = 0;
+                    $(el + ' ' + leftBtn).addClass("over");
+                }
+            }
+            else if (e == 1) {
+                var itemsCondition = $(el).find(itemsDiv).width() - $(el).width();
+                translateXval = parseInt(xds) + parseInt(itemWidth * s);
+                $(el + ' ' + leftBtn).removeClass("over");
+    
+                if (translateXval >= itemsCondition - itemWidth / 2) {
+                    translateXval = itemsCondition;
+                    $(el + ' ' + rightBtn).addClass("over");
+                }
+            }
+            $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
+        }
+    
+        //It is used to get some elements from btn
+        function click(ell, ee) {
+            var Parent = "#" + $(ee).parent().attr("id");
+            var slide = $(Parent).attr("data-slide");
+            ResCarousel(ell, Parent, slide);
+        }
+    
+    });
           
-             
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+            } else {
+            panel.style.maxHeight = (100+ panel.scrollHeight) + "px";
+            } 
+        });
+        }
           function slides(n, num){
                     //let revs = ["rev1", "rev2", "rev3", "rev4", "rev5"] 
                     let revs = document.getElementsByClassName("review " + num + "")
