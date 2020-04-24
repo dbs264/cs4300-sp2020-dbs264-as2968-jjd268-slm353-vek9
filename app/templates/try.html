@@ -81,9 +81,10 @@
                             <div class="panel">
                                 <table class="table" style="color: white;">
                                     <tbody>
-                                    {% for i in d['hours_open']%}
+                                    {% for key, value in d['hours_open'].items() %}
                                         <tr>
-                                            <td>{{i}}</td>
+                                            <td>{{key}}</td>
+                                            <td>{{value}}</td>
                                         </tr>
                                     {% endfor %}
 
