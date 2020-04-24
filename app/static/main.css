@@ -141,7 +141,7 @@ color: #34A853;
 }
 
 body, html {
-    background-color: #040D3A; 
+    background-color: #040D3A!important; 
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
@@ -217,6 +217,7 @@ body, html {
   justify-content: center;
   color: #ccc;
   font-size: 22px;
+  margin-bottom: 10px;
 }
 
  .form-control {
@@ -319,7 +320,7 @@ body, html {
 
   .result_container{
     width: 90%;
-    border: 10px solid white;
+    /* border: 10px solid white; */
     margin-left: 30px auto;
     margin-right: 30px auto;
     background-color: #A2AEF4;
@@ -328,12 +329,18 @@ body, html {
   
 
   .output_name{
-    font-size: 30px;
+    font-size: 25px;
+    font-style: italic;
+    width: 70%;
   }
 
  .rating{
       color: #e6c702;
-      font-size: 24px;
+      font-size: 40px;
+      float: right;
+      margin-top: -3%;
+      width: 30%;
+      text-align: end;
   }
 
   .price{
@@ -342,9 +349,9 @@ body, html {
   }
 
   .top{
-      margin-top: 20px;
-      display:flex;
       width:100%;
+      text-align: center;
+      justify-content: center;
   }
   .left{
       width: 50%;
@@ -360,12 +367,18 @@ body, html {
       
   }
   .bar_photo{
-    max-width:100%
+    max-width:100%;
+    max-height: 250px;
+    margin: 10px;
   }
 
   .review{
-   
+      margin: 10px;
       margin-right:30px;
+      justify-content: center;
+      text-align: center;
+      display: flex;
+      background-color: transparent!important;
   }
 
 /* PREVIOUS BUTTON *****************************************/
@@ -393,7 +406,15 @@ body, html {
 
 /* CAROUSEL SUGGESTIONS ************************************/
 
-/* 
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+.MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+.MultiCarousel .MultiCarousel-inner .item { float: left;}
+.MultiCarousel .MultiCarousel-inner .item > div { text-align: center; margin:10px; background:#f1f1f1; color:#666;}
+.MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }
+.MultiCarousel .leftLst { left:0; }
+.MultiCarousel .rightLst { right:0; }
+
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
   .container-fluid{
     margin-top:2%;
     margin-bottom:8%;
@@ -412,16 +433,84 @@ body, html {
     position: relative;
     max-width: 800px; 
     margin: 0 auto; 
+    cursor: pointer;
   }
   
   .container-multi .content {
     position: absolute; 
     bottom: 0; 
-    background: rgb(0, 0, 0); 
     background: rgba(0, 0, 0, 0.5); 
     color: #f1f1f1; 
     width: 100%; 
-    padding: 20px; 
     font-family: 'Montserrat', sans-serif;
+  }
 
-  } */
+  .container-multi .corner {
+    position: absolute; 
+    background: rgba(0, 0, 0, 0.5); 
+    color: #f1f1f1; 
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+/* CAROUSEL MODALS ************************************/
+
+  .close-margin {
+    margin: -2rem 1rem -1rem auto !important;
+    color:white!important;
+    opacity: 1!important;
+  }
+  .close-margin:hover{
+    color: grey!important;
+  }
+  .modal-content{
+    border-radius: 0!important;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.85)!important;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .modal-dialog{
+      overflow-y: initial!important
+  }
+   .modal-body{
+      height: 525px;
+      overflow-y: auto;
+  }
+
+  .review-button{
+    font-size: x-large;
+  }
+
+  .accordion {
+    background-color: transparent;
+    color: #A2AEF4;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 20px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #040D3A;
+  }
+  
+  .panel {
+    padding: 0 18px;
+    background-color: transparent!important;
+    max-height: 0;
+    transition: max-height 0.2s ease-out;
+    margin-top: 10px;
+    margin-bottom: 0px!important;
+    height: 300px!important;
+    overflow-y: auto;
+  }

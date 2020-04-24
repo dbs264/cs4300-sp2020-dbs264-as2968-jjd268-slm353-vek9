@@ -74,7 +74,7 @@ def load_details_with_clusters(city):
         return json.load(f)
 
 
-def sort_by_score(list, k=5):
+def sort_by_score(list, k=10):
     return sorted(list, key=lambda x: x["score"], reverse=True)[:k]
 
 
