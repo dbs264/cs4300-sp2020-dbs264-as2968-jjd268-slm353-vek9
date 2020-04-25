@@ -29,7 +29,7 @@
                                 {{'%0.1f'| format((100*d['score'])|float)}}% Match
                             </div>
                             <div class="content">
-                                <h1>{{d['name']}}</h1>
+                                <h1 class = "content-title" >{{d['name']}}</h1>
                             </div>
                         </div>
                     </div>
@@ -49,18 +49,20 @@
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title output_name" style="display: inline-block;"id="exampleModalLongTitle">
-                                {{d['name']}}{% if d['price'] %}, {{"$" * d['price']|int}}{% endif %}
-                            </h5>
-                            {% if d['rating'] %}
-                                <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
-                            {% endif %}
                             <div>
-                                <a href ="{{d['google_url']}}" > {{d['address']}}</a>
+                                <h5 class="modal-title output_name" style="display: inline-block;"id="exampleModalLongTitle">
+                                    {{d['name']}}{% if d['price'] %}, {{"$" * d['price']|int}}{% endif %}
+                                </h5>
+                                {% if d['rating'] %}
+                                    <p class = rating> {{"⭑" * d['rating']|round|int}} </p>
+                                {% endif %}
                             </div>
-                            <button type="button" class="close close-margin" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <div>
+                                <a class = "info address" href ="{{d['google_url']}}" > {{d['address']}}</a>
+                                <button type="button" class="close close-margin" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="modal-body">
@@ -69,7 +71,7 @@
                                 {% if d['photo_url'] %}
                                     <img src = "{{d['photo_url']}}" class = bar_photo> </img>
                                 {% endif %}
-                                <p class = score> Similarity Score: {{d['score']}}</p>
+                                <p class = "info"> Similarity Score: {{d['score']}}</p>
                                 
                                 {% if d['distance'] > 0 %}
                                     <p class = distance> Distance from location: {{"%.2f"|format(d['distance']|float)}} miles </p>
@@ -79,7 +81,7 @@
                             {% if d['hours_open'] %}
                             <button class="accordion">Hours</button>
                             <div class="panel">
-                                <table class="table" style="color: white;">
+                                <table class="table hours-table">
                                     <tbody>
                                     {% for key, value in d['hours_open'].items() %}
                                         <tr>
@@ -100,7 +102,7 @@
 
                                     <a class = "review-button prev {{num}}" onclick="slides(-1, '{{num}}')"  > &#10094; </a>
 
-                                    <ul style="list-style-type:none">
+                                    <ul class="review-list">
                     
                                         {% if d['reviews'][0] %}
                                             <li id = rev1 class = "review active {{num}}"> " {{d['reviews'][0]}} "</li>

@@ -173,21 +173,20 @@ body, html {
 }
 .hero-text-vertical{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg');
-  height: 20%;
-  line-height: 2;
 }
 .hero-text-search {
   margin-top: 15%;
   margin-bottom: 15%;
+  font-size: 3vw;;
 }
 
 .club-text {
-    font-size:55px;
+    font-size:5vw;
     font-family: 'Monoton', cursive;
 }
 
 .advisor-text {
-    font-size:65px;
+    font-size:6vw;
     font-family: 'Major Mono Display', monospace;
 }
 
@@ -210,13 +209,15 @@ body, html {
 /*FORM ******************************************/
 .search-title{
   padding-top: 5%;
+  padding-bottom: 3%;
+
 }
 
 .city-help{
   text-align: center;
   justify-content: center;
   color: #ccc;
-  font-size: 22px;
+  font-size: 2vw;
   margin-bottom: 10px;
 }
 
@@ -227,7 +228,7 @@ body, html {
     box-shadow: none;
     background-color: transparent;
     border-radius: 0px;
-    font-size: 24px;
+    font-size: 2vw;
     height: 7%;
     position: relative;
     margin-bottom: 1.5rem;
@@ -244,7 +245,9 @@ body, html {
 .form-horizontal .form-group{
     margin: 5%; 
     position: relative;
-    display: flex;
+    display: table;
+    font-size: 2vw;
+    width: 90%;
   }
 
 /* FLOATING TEXT FIELD ******************************/
@@ -252,7 +255,7 @@ body, html {
 
   
 .form-control-placeholder {
-    font-size: 24px;
+    font-size: 2vw;
     position: absolute;
     top: 0;
     padding: 6px 0 0 12px;
@@ -268,26 +271,14 @@ body, html {
   }
 
   label {
-    padding: 6px 12px 0 12px;
-    font-size: 16px;
-    vertical-align: top;
-    color: white
+    padding: 0px 12px 0 12px;
+    font-size: 2vw;
+    color: white;
+    vertical-align: middle;
   }
 
- 
-
-  /*PREFERENCES DROPDOWN ******************************/
-
-  .btn-secondary.active, .btn-secondary.focus {
-    background-color: #A2AEF4!important;
-  }
-
-  .bootstrap-select .dropdown-menu li a {
-      background-color: white;
-  }
-
-  .bootstrap-select{
-      width: max-content!important;
+  .btn {
+    font-size: 1.8vw;
   }
 
   /*SUBMIT BUTTON ************************************/
@@ -308,7 +299,7 @@ body, html {
   .submit{
     margin-left: 5%;
     margin-right: 5%;
-    font-size: 20px!important
+    font-size: 2vw!important
   }
 
   .submit:hover{
@@ -320,7 +311,6 @@ body, html {
 
   .result_container{
     width: 90%;
-    /* border: 10px solid white; */
     margin-left: 30px auto;
     margin-right: 30px auto;
     background-color: #A2AEF4;
@@ -329,23 +319,27 @@ body, html {
   
 
   .output_name{
-    font-size: 25px;
+    font-size: 3vw;
     font-style: italic;
     width: 70%;
   }
 
  .rating{
       color: #e6c702;
-      font-size: 40px;
+      font-size: 3vw;
       float: right;
-      margin-top: -2%;
+      margin: 0;
       width: 30%;
       text-align: end;
   }
 
   .price{
       color: #065408;
-      font-size: 20px;
+      font-size: 3vw;
+  }
+
+  .info {
+    font-size: 1.5vw;
   }
 
   .top{
@@ -373,8 +367,9 @@ body, html {
   }
 
   .review{
-      margin: 10px;
-      margin-right:30px;
+      /* margin: 10px; */
+      /* margin-right:30px; */
+      padding: 0;
       justify-content: center;
       text-align: center;
       display: flex;
@@ -387,7 +382,9 @@ body, html {
   display: inline-block;
   padding: 8px 16px;
   position: absolute;
-  left: 5%
+  left: 5%;
+  width: fit-content;
+  font-size: 1.5vw;
 }
 
 .back-button:hover {
@@ -423,12 +420,14 @@ body, html {
 
 .output-message{
     color: white;
-    font-size: 24px;
+    font-size: 2vw;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
-
+.content-title{
+  font-size:3vw
+}
 .container-multi{
     position: relative;
     max-width: 800px; 
@@ -453,18 +452,25 @@ body, html {
     top: 0;
     right: 0;
     padding: 10px;
-    font-size: 18px;
+    font-size: 1.8vw;
     font-family: 'Montserrat', sans-serif;
   }
 
 /* CAROUSEL MODALS ************************************/
 
-  .close-margin {
-    margin: -2rem 1rem -1rem auto !important;
+  .address{
+    width: 90%
+  }
+
+  .close {
     color:white!important;
     opacity: 1!important;
+    font-size: 3vw!important;
+    width: 10%;
+    text-align: end;
   }
-  .close-margin:hover{
+
+  .close:hover{
     color: grey!important;
   }
   .modal-content{
@@ -478,25 +484,41 @@ body, html {
   .modal-dialog{
       overflow-y: initial!important
   }
-   .modal-body{
+  
+  .modal-body{
       height: 525px;
       overflow-y: auto;
+  }
+
+  .modal-header{
+    padding: 2%!important
   }
 
   .review-button{
     font-size: x-large;
   }
 
+  .review-list{
+    list-style-type: none;
+    padding: 0 2% !important;
+    font-size: 1.5vw;
+  }
+
+  .hours-table{
+    color: white;
+    font-size: 1.5vw;
+  }
+
   .accordion {
     background-color: transparent;
     color: #A2AEF4;
     cursor: pointer;
-    padding: 18px;
+    padding: 2%;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 20px;
+    font-size: 2vw;
     transition: 0.4s;
   }
   
@@ -505,7 +527,7 @@ body, html {
   }
   
   .panel {
-    padding: 0 18px;
+    padding: 0 2%;
     background-color: transparent!important;
     max-height: 0;
     transition: max-height 0.2s ease-out;
