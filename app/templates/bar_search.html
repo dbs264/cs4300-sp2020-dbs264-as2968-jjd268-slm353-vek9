@@ -1,5 +1,10 @@
 <html>
-
+    <head>
+        <link rel="stylesheet" href="/static/slider.css">
+    </head>
+    
+    <body>
+    
     <div class="hero-text hero-text-vertical">
             <span class="club-text">CLUB</span>
             <span class="advisor-text">Advisor</span>
@@ -38,24 +43,17 @@
         <!----------------------------------- PRICE ----------------------------------->
         
         <div class="form-group">
-            <label for="price">Price</label>
-            <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary">
-                <input type="radio" name="price" value = "1"> $
-                </label>
-                <label class="btn btn-secondary">
-                <input type="radio"  name="price" value = "2"> $$
-                </label>
-                <label class="btn btn-secondary">
-                <input type="radio" name="price" value = "3"> $$$
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="price" value = "4"> $$$$
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="price" value = "5"> $$$$$
-                </label>
+            <div class = "price-label">
+                <label for="price">Price</label>
             </div>
+            <div class = "price-range">
+                <div id = "rangeV" class = "range-value"> </div>
+                <input 
+                    name="price"
+                    type = "range" 
+                    value="5"
+                    min = "1" max="5" >         
+             </div>
         </div>
     
         <!----------------------------------- ERROR ----------------------------------->
@@ -67,7 +65,7 @@
             <button 
                 id="submit_bar"
                 type="submit" 
-                class="submit btn btn-info " 
+                class="go-btn submit btn btn-info " 
                 > lets go. 
             </button> 
             
@@ -76,12 +74,12 @@
 
     </div>
 
-        <div class="submit-div-reset" >
+        <div class="submit-div" >
             <button 
                 style="display: none;"
                 id="reset-bars"
                 type="reset" 
-                class="submit btn btn-info " 
+                class="go-btn submit btn btn-info " 
                 > search again! 
             </button> 
         </div>
@@ -91,67 +89,86 @@
  
 
 <script>
-        var bars_list = "{{bars}}"
+
+
+    const labels = {"1":"$", "2":"$$", "3":"$$$", "4":"$$$$", "5":"$$$$$"};
+    const thumbSize = 5
+
+    const
+        range = $('input[type=range]'),
+        rangeV = $('#rangeV'),
+        setValue = ()=>{
+                const
+                    thumbAdjust = (thumbSize*.75)-(thumbSize*.25*range.val())
+                    newValue = thumbAdjust * - (100 / thumbSize)
+                rangeV.html(`<span>${labels[range.val()]}</span>`);
+                rangeV.css('transform', `translate(calc(${newValue}% + ${thumbAdjust}px))`);
+            };
+
+        $(document).ready(setValue)
+        range.on('input', setValue);
+
+
+    var bars_list = "{{bars}}"
         
-        function submitHandler3(response){
-                $("#bars").toggle('collapse');
-                $("#reset-bars").css('display','flex')
-                //$("#place_for_search").empty();
-                $("#city-help").css('display','none')
+    function submitHandler3(response){
+            $("#bars").toggle('collapse');
+            $("#rangeV").empty();
+            $("#reset-bars").css('display','flex')
+            $("#city-help").css('display','none')
+            $("#place_for_suggestions").html(response);
+        }
 
-                $("#place_for_suggestions").html(response);
-            }
+    $("#reset-bars").click(function(e){
+            $("#bars").toggle('collapse');
+            range.val(5); setValue();
+            $("#reset-bars").css('display','none');
+            $("#city-help").css('display','flex')
+            $("#place_for_suggestions").empty();
+        });
 
-        $("#reset-bars").click(function(e){
-                $("#bars").toggle('collapse');
-                $("#reset-bars").css('display','none');
-                $("#city-help").css('display','flex')
-                $("#place_for_suggestions").empty();
-            });
+    $("#submit-back").click(function(e){
+        e.preventDefault();
+        $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
+        $("#demo").toggle('collapse');
+        $("#place_for_search").empty();
+        $("#place_for_suggestions").empty();      
+        });
 
-        $("#submit-back").click(function(e){
-            e.preventDefault();
-            $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
-            $("#demo").toggle('collapse');
-            $("#place_for_search").empty();
-            $("#place_for_suggestions").empty();      
-          });
+        
 
-          
+    $("#submit_bar").click(function(event){
+        event.preventDefault();
+        var city =  $("#city").val();
+        var location =  $("#location").val();
+        var price =  $("input[name='price']").val();            
+        var bar_name = $("#bar_name").val();
+        
+        console.log(price)
 
-        $("#submit_bar").click(function(event){
-            event.preventDefault();
-            var city =  $("#city").val();
-            var location =  $("#location").val();
-            var price =  $("input[name='price']:checked").val();
+        
+        $.ajax({
+            url: "/suggestions",
+            type: "get",
+            data: {
+            city: city,
+            location: location, 
+            price: price, 
+            bar_name: bar_name,
             
-            var bar_name = $("#bar_name").val();
-            
-            console.log(bar_name)
-
-            
-            $.ajax({
-                url: "/suggestions",
-                type: "get",
-                data: {
-                city: city,
-                location: location, 
-                price: price, 
-                bar_name: bar_name,
-                
+        },
+            success: function(response) {
+                submitHandler3(response);
             },
-                success: function(response) {
-                    submitHandler3(response);
-                },
-                error: function(xhr) {
-                console.log("ERROR");
-                $("#error").css('display','flex')
-                }
-            });
-        }); 
- 
+            error: function(xhr) {
+            console.log("ERROR");
+            $("#error").css('display','flex')
+            }
+        });
+    }); 
+
  </script>
 
- 
+</body>
 
 </html>

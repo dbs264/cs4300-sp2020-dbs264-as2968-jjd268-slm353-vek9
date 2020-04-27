@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="/static/bootstrap.min.css">
         <link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="/static/fonts.css">
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -27,12 +28,12 @@
                 </div>
 
                 <!---------------------------------------------  FORM  --------------------------------------------->
-                <form class="form-horizontal form" id = "myform">
+                <form class="form-horizontal" id = "myform">
 
                                 
                     <!-----------------------------------  CITY  ----------------------------------->
                     
-                    <div class="form-group">
+                    <div class="form-group search-form-margin ">
                         <input type="text" id="city" name="city" class="form-control" value = "New York" required>
                         <label class="form-control-placeholder" for="city">Which City?</label>
                     </div>
@@ -43,21 +44,18 @@
                         <button 
                             id="preference_submit"
                             type="submit" 
-                            class="submit btn btn-info " 
+                            class="go-btn submit btn btn-info " 
                             > search by preference 
                         </button> 
 
                         <button 
                         id="bar_submit"
                         type="submit" 
-                        class="submit btn btn-info " 
+                        class="go-btn submit btn btn-info " 
                         > search by bar name 
                         </button> 
                     </div>
                 
-
-                    <div class="submit-div"></div>
-
                 </form>
         
 
