@@ -391,7 +391,8 @@ body, html {
   }
   .modal-content{
     border-radius: 0!important;
-    width: 100%;
+    width: 90%;
+    margin: 5%;
     background-color: rgba(0, 0, 0, 0.85)!important;
     color: white;
     font-family: 'Montserrat', sans-serif;
