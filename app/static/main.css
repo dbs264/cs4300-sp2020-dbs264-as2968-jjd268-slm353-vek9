@@ -5,104 +5,6 @@ CORNFLOWER BLUE: #6D8BF0
 ROYAL BLUE: #1F51CB
 NAVY: #061E6C
 */
-@font-face {
-    font-family: 'IM Fell French Canon SC';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('IM FELL French Canon SC'), local('IM_FELL_French_Canon_SC'), url(https://fonts.gstatic.com/s/imfellfrenchcanonsc/v9/FBVmdCru5-ifcor2bgq9V89khWcmQghEURY7H0czWhG3IkqG.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* vietnamese */
-  @font-face {
-    font-family: 'Major Mono Display';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Major Mono Display Regular'), local('MajorMonoDisplay-Regular'), url(https://fonts.gstatic.com/s/majormonodisplay/v4/RWmVoLyb5fEqtsfBX9PDZIGr2tFubRh7AneRAHRfwhRT.woff2) format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Major Mono Display';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Major Mono Display Regular'), local('MajorMonoDisplay-Regular'), url(https://fonts.gstatic.com/s/majormonodisplay/v4/RWmVoLyb5fEqtsfBX9PDZIGr2tFubRh7A3eRAHRfwhRT.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Major Mono Display';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Major Mono Display Regular'), local('MajorMonoDisplay-Regular'), url(https://fonts.gstatic.com/s/majormonodisplay/v4/RWmVoLyb5fEqtsfBX9PDZIGr2tFubRh7DXeRAHRfwg.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Monoton';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Monoton'), local('Monoton-Regular'), url(https://fonts.gstatic.com/s/monoton/v9/5h1aiZUrOngCibe4TkHLQka4BU4.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* cyrillic-ext */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WRhyyTh89ZNpQ.woff2) format('woff2');
-    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-  }
-  /* cyrillic */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459W1hyyTh89ZNpQ.woff2) format('woff2');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-  }
-  /* vietnamese */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WZhyyTh89ZNpQ.woff2) format('woff2');
-    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
-  }
-  /* latin-ext */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WdhyyTh89ZNpQ.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v14/JTUSjIg1_i6t8kCHKm459WlhyyTh89Y.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Six Caps';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Six Caps'), local('SixCaps'), url(https://fonts.gstatic.com/s/sixcaps/v10/6ae_4KGrU7VR7bNmaYcV_3T4Pzoo.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
 
 @media (min-width: 1200px) {
 .container {
@@ -132,17 +34,14 @@ position:absolute;
 top:2%;
 right:2%;
 }
-.btn{
-background-color: #49537C!important;
-border: none!important;
-}
+
 .step-links a{
 color: #34A853;
 }
 
 body, html {
     background-color: #040D3A!important; 
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("nightlife.jpg");
     height: 100%;
@@ -173,21 +72,20 @@ body, html {
 }
 .hero-text-vertical{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg');
-  height: 20%;
-  line-height: 2;
 }
 .hero-text-search {
   margin-top: 15%;
   margin-bottom: 15%;
+  font-size: 3vw;;
 }
 
 .club-text {
-    font-size:55px;
+    font-size:5vw;
     font-family: 'Monoton', cursive;
 }
 
 .advisor-text {
-    font-size:65px;
+    font-size:6vw;
     font-family: 'Major Mono Display', monospace;
 }
 
@@ -210,13 +108,15 @@ body, html {
 /*FORM ******************************************/
 .search-title{
   padding-top: 5%;
+  padding-bottom: 3%;
+
 }
 
 .city-help{
   text-align: center;
   justify-content: center;
   color: #ccc;
-  font-size: 22px;
+  font-size: 2vw;
   margin-bottom: 10px;
 }
 
@@ -227,7 +127,7 @@ body, html {
     box-shadow: none;
     background-color: transparent;
     border-radius: 0px;
-    font-size: 24px;
+    font-size: 2vw;
     height: 7%;
     position: relative;
     margin-bottom: 1.5rem;
@@ -244,15 +144,22 @@ body, html {
 .form-horizontal .form-group{
     margin: 5%; 
     position: relative;
-    display: flex;
+    display: table;
+    font-size: 2vw;
+    width: 90%;
+    padding: 0 9%;
   }
+
+.search-form-margin {
+  padding: 0!important;
+}
 
 /* FLOATING TEXT FIELD ******************************/
 /* CITY, SEARCH, BAR NAME ***************************/
 
   
 .form-control-placeholder {
-    font-size: 24px;
+    font-size: 2vw;
     position: absolute;
     top: 0;
     padding: 6px 0 0 12px;
@@ -268,38 +175,51 @@ body, html {
   }
 
   label {
-    padding: 6px 12px 0 12px;
-    font-size: 16px;
-    vertical-align: top;
-    color: white
+    padding: 0px 12px 0 12px;
+    font-size: 2vw;
+    color: white;
+    vertical-align: middle;
+    font-family: 'Montserrat', sans-serif;
   }
 
- 
+  /* PRICE ************************************/
 
-  /*PREFERENCES DROPDOWN ******************************/
 
-  .btn-secondary.active, .btn-secondary.focus {
-    background-color: #A2AEF4!important;
+  .price-btn{
+    font-size: 2vw;
+    background-color: #8c1cff;    
+    border: none!important;
+  }
+    
+  .price-btn.active, .price-btn:hover {
+    background-color: #375bff!important;
+    color: white;
   }
 
-  .bootstrap-select .dropdown-menu li a {
-      background-color: white;
+  .price-label{
+    font-size: 80%;
+    width: 15%;
+    display: inline-block;
   }
 
-  .bootstrap-select{
-      width: max-content!important;
+  .price-range{
+    width: 85%;
+    display: inline-block;
   }
 
-  /*SUBMIT BUTTON ************************************/
+  /*LET's GO BUTTONS *********************************/
+  .go-btn{
+    background-image: linear-gradient(135deg,#375bff 0%,#8c1cff 100%)!important;
+    border: none!important;
+  }
+
+  .go-btn:hover{
+    background-size: 200%;
+  }
+
+  /*SUBMIT BUTTON ***********************************/
 
   .submit-div{
-    display: flex; 
-    justify-content: center;
-    font-family: 'Major Mono Display', monospace;
-  }
-
-  .submit-div-reset{
-    margin-top: 5%;
     display: flex; 
     justify-content: center;
     font-family: 'Major Mono Display', monospace;
@@ -308,44 +228,34 @@ body, html {
   .submit{
     margin-left: 5%;
     margin-right: 5%;
-    font-size: 20px!important
+    font-size: 2vw!important
   }
 
-  .submit:hover{
-      background-color: #A2AEF4!important;
-      border-color: none!important;
-  }
-
-  /*TEMPORARY SUGGESTIONS ************************************/
-
-  .result_container{
-    width: 90%;
-    /* border: 10px solid white; */
-    margin-left: 30px auto;
-    margin-right: 30px auto;
-    background-color: #A2AEF4;
-    margin-bottom: 20px;
-  }
+  /* SUGGESTIONS ************************************/
   
-
-  .output_name{
-    font-size: 25px;
+  .carousel-object-name{
+    display: inline-block;
+    font-size: 3vw;
     font-style: italic;
     width: 70%;
   }
 
  .rating{
       color: #e6c702;
-      font-size: 40px;
+      font-size: 3vw;
       float: right;
-      margin-top: -3%;
+      margin: 0;
       width: 30%;
       text-align: end;
   }
 
   .price{
       color: #065408;
-      font-size: 20px;
+      font-size: 3vw;
+  }
+
+  .info {
+    font-size: 1.5vw;
   }
 
   .top{
@@ -373,8 +283,9 @@ body, html {
   }
 
   .review{
-      margin: 10px;
-      margin-right:30px;
+      /* margin: 10px; */
+      /* margin-right:30px; */
+      padding: 0;
       justify-content: center;
       text-align: center;
       display: flex;
@@ -387,7 +298,9 @@ body, html {
   display: inline-block;
   padding: 8px 16px;
   position: absolute;
-  left: 5%
+  left: 5%;
+  width: fit-content;
+  font-size: 1.5vw;
 }
 
 .back-button:hover {
@@ -423,12 +336,14 @@ body, html {
 
 .output-message{
     color: white;
-    font-size: 24px;
+    font-size: 2vw;
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
 
-
+.content-title{
+  font-size:3vw
+}
 .container-multi{
     position: relative;
     max-width: 800px; 
@@ -453,23 +368,31 @@ body, html {
     top: 0;
     right: 0;
     padding: 10px;
-    font-size: 18px;
+    font-size: 1.8vw;
     font-family: 'Montserrat', sans-serif;
   }
 
 /* CAROUSEL MODALS ************************************/
 
-  .close-margin {
-    margin: -2rem 1rem -1rem auto !important;
+  .address{
+    width: 90%
+  }
+
+  .close {
     color:white!important;
     opacity: 1!important;
+    font-size: 3vw!important;
+    width: 10%;
+    text-align: end;
   }
-  .close-margin:hover{
+
+  .close:hover{
     color: grey!important;
   }
   .modal-content{
     border-radius: 0!important;
-    width: 100%;
+    width: 90%;
+    margin: 5%;
     background-color: rgba(0, 0, 0, 0.85)!important;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -478,39 +401,59 @@ body, html {
   .modal-dialog{
       overflow-y: initial!important
   }
-   .modal-body{
+  
+  .modal-body{
       height: 525px;
       overflow-y: auto;
+  }
+
+  .modal-header{
+    padding: 2%!important
   }
 
   .review-button{
     font-size: x-large;
   }
 
+  .review-list{
+    list-style-type: none;
+    padding: 0 2% !important;
+    font-size: 1.5vw;
+  }
+
+  .hours-table{
+    color: white;
+    font-size: 1.5vw;
+  }
+
   .accordion {
     background-color: transparent;
     color: #A2AEF4;
     cursor: pointer;
-    padding: 18px;
+    padding: 2%;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 20px;
+    font-size: 2vw;
     transition: 0.4s;
   }
   
-  .active, .accordion:hover {
+  .accordion-active, .accordion:hover {
     background-color: #040D3A;
   }
   
   .panel {
-    padding: 0 18px;
+    padding: 0 2%;
     background-color: transparent!important;
     max-height: 0;
     transition: max-height 0.2s ease-out;
     margin-top: 10px;
-    margin-bottom: 0px!important;
     height: 300px!important;
     overflow-y: auto;
   }
+
+
+  /*  TEMP ********* */
+
+ 

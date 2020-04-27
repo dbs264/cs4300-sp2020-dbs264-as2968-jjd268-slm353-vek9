@@ -6,7 +6,9 @@ import string
 import time
 import numpy as np
 from nltk.tokenize import TreebankWordTokenizer
+from nltk.stem import PorterStemmer
 
+ps = PorterStemmer()
 tokenizer = TreebankWordTokenizer()
 data_path = "../data/"
 
@@ -33,13 +35,14 @@ def build_inverted_index(details):
     for ind, place in enumerate(details):
         tokens = tokenizer.tokenize(place["agg_reviews"].lower())
         for token in tokens:
-            if token in result:
-                if ind in result[token]:
-                    result[token][ind] += 1
+            stem = ps.stem(token)
+            if stem in result:
+                if ind in result[stem]:
+                    result[stem][ind] += 1
                 else:
-                    result[token][ind] = 1
+                    result[stem][ind] = 1
             else:
-                result[token] = {ind: 1}
+                result[stem] = {ind: 1}
 
     for word, occurences in result.items():
         result[word] = sorted(list(occurences.items()))

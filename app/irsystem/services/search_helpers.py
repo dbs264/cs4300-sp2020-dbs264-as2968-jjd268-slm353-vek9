@@ -1,6 +1,7 @@
 import config
 import random
 import json
+import re
 
 
 data_path = config.basedir+"/data/"
@@ -25,7 +26,7 @@ def format_output(place_details):
     else:
         result["coordinates"] = {"lat": "", "lng":  ""}
     if "opening_hours" in place_details and "weekday_text" in place_details["opening_hours"]:
-        result["hours_open"] = place_details["opening_hours"]["weekday_text"]
+        result["hours_open"] = format_dates(place_details["opening_hours"]["weekday_text"])
     else:
         result["hours_open"] = []
     if "price_level" in place_details:
@@ -83,3 +84,11 @@ def filter_by_attributes(details, price, cluster=None):
         return list(filter(lambda x: (int(x["price_level"]) <= price and x["cluster"] == cluster) if "price_level" in x else False, details))
     else:
         return list(filter(lambda x: int(x["price_level"]) <= price if "price_level" in x else False, details))
+
+def format_dates(hours_open):
+    new = {}
+    for e in hours_open:
+       day = re.search("^[^:]*", e).group().strip()
+       times = re.search("(?<=:).*", e).group().strip()
+       new[day]=times
+    return new

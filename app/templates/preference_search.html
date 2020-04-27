@@ -1,100 +1,110 @@
 <html>
-   
-    <div class="hero-text hero-text-vertical">
-        <span class="club-text">CLUB</span>
-        <span class="advisor-text">Advisor</span>
+    <head>
+        <link rel="stylesheet" href="/static/slider.css">
+    </head>
+    <body>
 
-    </div>
-        
-    <div class="search-title">
-        <button id="submit-back" type="button"  class="back-button previous  " > &#8249; Back to Home </button> 
-        <div id = "city-help" class=city-help> Searching in {{city}} </div>
-    </div>
+        <div class="hero-text hero-text-vertical">
+            <span class="club-text">CLUB</span>
+            <span class="advisor-text">Advisor</span>
+        </div>
+            
+        <div class="search-title">
+            <button id="submit-back" type="button"  class="back-button previous  " > &#8249; Back to Home </button> 
+            <div id = "city-help" class=city-help> Searching in {{city}} </div>
+        </div>
 
-    <form class="form-horizontal" id = "myform">
-        <div id = pref>
+        <form class="form-horizontal" id = "myform">
 
+            <div id = pref>
+                <div class="form-group">
+                    <input type="text" id="location" name="location" class="form-control"  placeholder = "ex: East Village, Times Square" >
+                    <label class="form-control-placeholder" for="location">Location</label>
+                </div>
 
+                <!----------------------------------- PREFS ----------------------------------->
+                <div class="form-group">
+                    <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: dancing, EDM"  >
+                    <label class="form-control-placeholder" for="search">Preferences?</label>
+                </div>
+  
+                <!----------------------------------- PRICE ----------------------------------->
+                <div class="form-group">
+                    <div class = "price-label">
+                        <label for="price">Price</label>
+                    </div>
+                    <div class = "price-range">
+                        <div id = "rangeV" class = "range-value"> </div>
+                        <input 
+                            name="price"
+                            type = "range" 
+                            value="5"
+                            min = "1" max="5" >         
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <input type="text" id="location" name="location" class="form-control"  placeholder = "ex: East Village, Times Square" >
-                <label class="form-control-placeholder" for="location">Location</label>
+                <!----------------------------------- ERROR ----------------------------------->
+                <div id = "error" class = "city-help" style="display: none;">
+                    Something went wrong. Try checking spelling.
+                </div>
+
+                <!----------------------------------- SUBMIT ----------------------------------->
+                <div class="submit-div">
+                    <button 
+                        id="submit_pref"
+                        type="submit" 
+                        class="go-btn submit btn btn-info " 
+                        > lets go. 
+                    </button> 
+                </div>
             </div>
 
-        <!----------------------------------- PREFS ----------------------------------->
-        <div class="form-group">
-            <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: dancing, EDM"  >
-            <label class="form-control-placeholder" for="search">Preferences?</label>
-        </div>
-
-       
-
-        <!----------------------------------- PRICE ----------------------------------->
-
-        <div class="form-group">
-            <label for="price">Price</label>
-            <div id = "price" class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary">
-                <input type="radio" name="price" value = "1"> $
-                </label>
-                <label class="btn btn-secondary">
-                <input type="radio"  name="price" value = "2"> $$
-                </label>
-                <label class="btn btn-secondary">
-                <input type="radio" name="price" value = "3"> $$$
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="price" value = "4"> $$$$
-                </label>
-                <label class="btn btn-secondary">
-                    <input type="radio" name="price" value = "5"> $$$$$
-                </label>
+            <div class="submit-div" >
+                <button 
+                    style="display: none;"
+                    id="reset-pref"
+                    type="reset" 
+                    class="go-btn submit btn btn-info " 
+                    > search again! 
+                </button> 
             </div>
-        </div>
+        </form>
+    </body>
 
-        <!----------------------------------- ERROR ----------------------------------->
-        <div id = "error" class = "city-help" style="display: none;">
-            Something went wrong. Try checking spelling.
-        </div>
+    <script>
+        const labels = {"1":"$", "2":"$$", "3":"$$$", "4":"$$$$", "5":"$$$$$"};
+        const thumbSize = 5
 
-        <!----------------------------------- SUBMIT ----------------------------------->
-        <div class="submit-div">
-            <button 
-                id="submit_pref"
-                type="submit" 
-                class="submit btn btn-info " 
-                > lets go. 
-            </button> 
-        </div>
-    </div>
+        const
+            range = $('input[type=range]'),
+            rangeV = $('#rangeV'),
+            setValue = ()=>{
+                    const
+                        val = range.val()
+                        thumbAdjust = (thumbSize * .75) - (thumbSize * .25 * val)
+                        newValue = thumbAdjust * - (100 / thumbSize)
+                    rangeV.html(`<span>${labels[val]}</span>`);
+                    rangeV.css('transform', `translate(calc(${newValue}% + ${thumbAdjust}px))`);
+            
+                    var position = (val - range.attr('min')) / (range.attr('max') - range.attr('min')) * 100
+                    range.css('background-image', 'linear-gradient(135deg, #375bff 0%, #8c1cff ' + position + '%, #fff ' + '0%, white 100%)')
+                };
 
-    <div class="submit-div-reset" >
-        <button 
-            style="display: none;"
-            id="reset-pref"
-            type="reset" 
-            class="submit btn btn-info " 
-            > search again! 
-        </button> 
-    </div>
+            $(document).ready(setValue)
+            range.on('input', setValue);
 
-</form>
-
-
-
-<script>
 
         function submitHandler2(response){
             $("#pref").toggle('collapse');
+            $("#rangeV").empty();
             $("#reset-pref").css('display','flex')
-            //$("#place_for_search").empty();
             $("#city-help").css('display','none')
-
             $("#place_for_suggestions").html(response);
-         }
+        }
 
-         $("#reset-pref").click(function(e){
+        $("#reset-pref").click(function(e){
             $("#pref").toggle('collapse');
+            range.val(5); setValue();
             $("#reset-pref").css('display','none');
             $("#city-help").css('display','flex')
             $("#place_for_suggestions").empty();
@@ -107,17 +117,13 @@
             $("#place_for_search").empty();
             $("#place_for_suggestions").empty();      
         });
-
-
     
         $("#submit_pref").click(function(event){
             event.preventDefault();
             var city =  $("#city").val();
             var location =  $("#location").val();
-            var price =  $("input[name='price']:checked").val();
-            
+            var price =  $("input[name='price']").val();      
             var search = $("#search").val();
-
             
             console.log(location, city)
             
@@ -140,11 +146,6 @@
                 }
             });
         }); 
- 
- </script>
 
- 
-
-
-
+    </script>
 </html>

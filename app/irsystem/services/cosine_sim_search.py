@@ -7,7 +7,9 @@ from collections import Counter
 from app.irsystem.services import search_helpers as helpers
 from nltk.tokenize import TreebankWordTokenizer
 from app.irsystem.services import distance_from
+from nltk.stem import PorterStemmer
 
+ps = PorterStemmer()
 tokenizer = TreebankWordTokenizer()
 
 
@@ -17,16 +19,17 @@ def index_search(query, index, idf, doc_norms):
     result = np.zeros(len(doc_norms))
     inverted_query = {}
     for token in query_tokens:
-        if token in inverted_query:
-            inverted_query[token] += 1
+        stem = ps.stem(token)
+        if stem in inverted_query:
+            inverted_query[stem] += 1
         else:
-            inverted_query[token] = 1
+            inverted_query[stem] = 1
 
-    for token, q_count in inverted_query.items():
-        if token in idf:
-            query_norm += (q_count*idf[token])**2
-            for doc, count in index[token]:
-                result[doc] += (q_count*count)*idf[token]**2
+    for stem, q_count in inverted_query.items():
+        if stem in idf:
+            query_norm += (q_count*idf[stem])**2
+            for doc, count in index[stem]:
+                result[doc] += (q_count*count)*idf[stem]**2
 
     query_norm = query_norm ** .5
     new_doc_norms = (query_norm*doc_norms)
