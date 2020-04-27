@@ -103,6 +103,9 @@
                     newValue = thumbAdjust * - (100 / thumbSize)
                 rangeV.html(`<span>${labels[range.val()]}</span>`);
                 rangeV.css('transform', `translate(calc(${newValue}% + ${thumbAdjust}px))`);
+
+                var position = (val - range.attr('min')) / (range.attr('max') - range.attr('min')) * 100
+                range.css('background-image', 'linear-gradient(135deg, #375bff 0%, #8c1cff ' + position + '%, #fff ' + '0%, white 100%)')
             };
 
         $(document).ready(setValue)

@@ -12,7 +12,7 @@ input[type=range]::-webkit-slider-runnable-track {
   height: 4px;
   cursor: pointer;
   animate: 0.2s;
-  background-image: linear-gradient(135deg,#375bff 0%,#8c1cff 100%)!important;
+  /* background-image: linear-gradient(135deg,#375bff 0%,#8c1cff 100%)!important; */
   border-radius: 25px;
 }
 
@@ -52,7 +52,7 @@ input[type=range]::-moz-range-thumb {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #375bff;
+  /* background: #375bff; */
 }
 
 .range-value span{
