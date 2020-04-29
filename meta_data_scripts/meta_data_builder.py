@@ -83,7 +83,8 @@ def build_meta_data_file(city):
 
 
 def main():
-    build_meta_data_file("new_york")
+    build_meta_data_file("miami")
+    build_meta_data_file("montreal")
 
 
 if __name__ == '__main__':

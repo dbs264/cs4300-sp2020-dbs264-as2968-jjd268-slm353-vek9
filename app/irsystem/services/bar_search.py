@@ -31,7 +31,7 @@ def search(bar_name, city, price, location_string):
     for ind, score in enumerate(scores):
         details[ind]["score"] = score
     if location_string:
-        details = distance_from.add_distances(details, location_string)
+        details = distance_from.add_distances(details, location_string, city)
         distance_from.update_scores_for_distance(details)
 
     filtered_results = helpers.filter_by_attributes(

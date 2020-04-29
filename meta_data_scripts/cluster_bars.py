@@ -25,7 +25,7 @@ def build_model(details):
 
 
 def main():
-    city = "new_york"
+    city = "miami"
     details = meta_data_builder.flatten_reviews(
         meta_data_builder.load_details(city))
     model, vectorizer, true_k, X = build_model(details)

@@ -50,7 +50,7 @@ def search(query, city, price, location_string):
     for ind, score in enumerate(scores):
         details[ind]["score"] = score
     if location_string:
-        details = distance_from.add_distances(details, location_string)
+        details = distance_from.add_distances(details, location_string, city)
         distance_from.update_scores_for_distance(details)
     top_results = helpers.sort_by_score(
         helpers.filter_by_attributes(details, price))

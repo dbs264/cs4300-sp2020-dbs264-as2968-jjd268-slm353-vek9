@@ -58,9 +58,15 @@ def preference_search():
 
 @irsystem.route('/bar_search')
 def bar_search():
-    cities_list = ["new_york", "New York"]
+    cities_list = ["new_york", "New York",
+                   "Miami", "miami", "montreal", "Montreal"]
     city = request.args.get('city')
     bars = []
     if city in cities_list:
         bars = bars_list.bars_list_for_city(city)
     return render_template('bar_search.html', bars=bars, city=city)
+
+
+@irsystem.route('/get_cities_list')
+def get_cities():
+    return ["New York", "Montreal", "Miami"]
