@@ -24,7 +24,7 @@
 
                 <!----------------------------------- PREFS ----------------------------------->
                 <div class="form-group">
-                    <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: dancing, EDM"  >
+                    <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: rooftop bars with a view"  >
                     <label class="form-control-placeholder" for="search">Preferences?</label>
                 </div>
   
@@ -115,7 +115,11 @@
             $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
             $("#demo").toggle('collapse');
             $("#place_for_search").empty();
-            $("#place_for_suggestions").empty();      
+            $("#place_for_suggestions").empty();   
+            city = ''
+            location =  ''
+            price =  ''
+            search =''   
         });
     
         $("#submit_pref").click(function(event){
