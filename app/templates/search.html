@@ -39,8 +39,8 @@
                         <!--<input type="text" id="city" name="city" class="form-control" value = "New York" required>-->
                        <!-- <label class="form-control-placeholder" for="city">Which City?</label>-->
                       <div class = city-form>
-                        <select id = city name = city> 
-                          <option value = "null" disabled selected> Select a City </option>
+                        <select id = city name = city required> 
+                          <option value = "" disabled selected hidden> Select a City </option>
                           {% for d in cities %}
                           <option value = "{{d}}"> {{d}} </option>
                           {% endfor %}
