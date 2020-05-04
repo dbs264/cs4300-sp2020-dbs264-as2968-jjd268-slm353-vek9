@@ -2,8 +2,12 @@ import config
 import random
 import json
 import re
-from nltk_data.corpora import wordnet
+import nltk
 from nltk.tokenize import TreebankWordTokenizer
+from wn import WordNet
+from wn.info import WordNetInformationContent
+from wn.constants import wordnet_30_dir
+wordnet = WordNet(wordnet_30_dir)
 
 
 data_path = config.basedir+"/data/"
@@ -106,7 +110,7 @@ def query_expansion(query):
     synonyms = []
     for word in query_tokens:
         for syn in wordnet.synsets(word):
-            for l in syn.lemmas():
-                synonyms.append(l.name())
+                synonyms.extend(syn.lemma_names())
         synonyms.append(word)
     return set(synonyms)
+
