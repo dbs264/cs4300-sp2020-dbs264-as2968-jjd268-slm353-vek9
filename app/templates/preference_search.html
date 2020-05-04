@@ -11,20 +11,27 @@
             
         <div class="search-title">
             <button id="submit-back" type="button"  class="back-button previous  " > &#8249; Back to Home </button> 
+            {% if city %}
             <div id = "city-help" class=city-help> Searching in {{city}} </div>
+            {% else %}
+            <div id = "city-help" class=city-help> Please select a city on the previous page </div>
+            {% endif %}
         </div>
-
-        <form class="form-horizontal" id = "myform">
+        {% if city %}
+        <form class="form-horizontal" id = "myform" >
+        {% else %}
+        <form class="form-horizontal" id = "myform" hidden >
+        {% endif %}
 
             <div id = pref>
                 <div class="form-group">
-                    <input type="text" id="location" name="location" class="form-control"  placeholder = "ex: East Village, Times Square" >
+                    <input type="text" id="location" name="location" class="form-control"  placeholder = "input a neigborhood, address, or landmark" >
                     <label class="form-control-placeholder" for="location">Location</label>
                 </div>
 
                 <!----------------------------------- PREFS ----------------------------------->
                 <div class="form-group">
-                    <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: dancing, EDM"  >
+                    <input type="text" id="search" name = "search" class="form-control"  placeholder = "ex: rooftop bars with a view"  >
                     <label class="form-control-placeholder" for="search">Preferences?</label>
                 </div>
   
@@ -115,7 +122,11 @@
             $("body").css('background-image', "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/static/nightlife.jpg')");
             $("#demo").toggle('collapse');
             $("#place_for_search").empty();
-            $("#place_for_suggestions").empty();      
+            $("#place_for_suggestions").empty();   
+            city = ''
+            location =  ''
+            price =  ''
+            search =''   
         });
     
         $("#submit_pref").click(function(event){

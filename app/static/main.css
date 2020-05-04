@@ -75,7 +75,7 @@ body, html {
 }
 .hero-text-search {
   margin-top: 15%;
-  margin-bottom: 15%;
+  margin-bottom: 5%;
   font-size: 3vw;;
 }
 
@@ -215,6 +215,7 @@ body, html {
 
   .go-btn:hover{
     background-size: 200%;
+
   }
 
   /*SUBMIT BUTTON ***********************************/
@@ -453,7 +454,80 @@ body, html {
     overflow-y: auto;
   }
 
+  .city-form{
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 5%;
+  }
 
+  select {
+    width: 100%;
+    height: 50px;
+    font-size: 100%;
+    border-radius: 0;
+    background-color: #A2AEF4;
+    background-image: linear-gradient(135deg,#375bff 0%,#8c1cff 100%);
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    
+
+  }
+ 
+  select:hover {
+    color: #8c1cff;
+    background-color: white;
+    background-image: none;
+  }
+
+  #servicing{
+    color: white;
+    text-align: center;
+    margin-top: 5%;
+  }
+ 
+  
+  .tip {
+    visibility: hidden;
+    position: absolute;
+    background-color: black;
+    color: white;
+    text-align: left;
+    width:130%;
+    bottom: 125%;
+    
+    font-family: 'Raleway', sans-serif;
+   
+    
+  }
+
+
+ 
+
+  #pref-box{
+    position:relative;
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  #bar-box{
+    position:relative;
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+ #pref-box:hover .tip {
+    visibility: visible;
+  }
+  #bar-box:hover .tip {
+    visibility: visible;
+  }
+
+  
+  
+  
   /*  TEMP ********* */
 
  

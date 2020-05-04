@@ -47,7 +47,9 @@ def suggestions():
 # initial page with city search
 @irsystem.route('/')
 def search():
-    return render_template('search.html')
+    cities= ["New York", "Montreal", "Miami"]
+    return render_template('search.html', cities = cities)
+
 
 
 @irsystem.route('/preference_search')
@@ -67,6 +69,3 @@ def bar_search():
     return render_template('bar_search.html', bars=bars, city=city)
 
 
-@irsystem.route('/get_cities_list')
-def get_cities():
-    return ["New York", "Montreal", "Miami"]
