@@ -3,9 +3,15 @@ import random
 import json
 import re
 from nltk.corpus import wordnet
+from nltk.tokenize import TreebankWordTokenizer
 
 
 data_path = config.basedir+"/data/"
+
+tokenizer = TreebankWordTokenizer()
+
+with open(data_path + "stopwords.json") as f:
+    stop_words = json.load(f)
 
 
 def format_output(place_details):
@@ -95,8 +101,10 @@ def format_dates(hours_open):
     return new
 
 def query_expansion(query):
+    query_tokens = tokenizer.tokenize(query.lower()) 
+    query_tokens = [i for i in query_tokens if not i in stop_words]
     synonyms = []
-    for word in query:
+    for word in query_tokens:
         for syn in wordnet.synsets(word):
             for l in syn.lemmas():
                 synonyms.append(l.name())

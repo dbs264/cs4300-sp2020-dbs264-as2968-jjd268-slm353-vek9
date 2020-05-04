@@ -14,8 +14,7 @@ tokenizer = TreebankWordTokenizer()
 
 
 def index_search(query, index, idf, doc_norms):
-    query_tokens = tokenizer.tokenize(query.lower())
-    query_tokens = helpers.query_expansion(query_tokens)
+    query_tokens = helpers.query_expansion(query)
     query_norm = 0
     result = np.zeros(len(doc_norms))
     inverted_query = {}
