@@ -2,7 +2,7 @@ import config
 import random
 import json
 import re
-from nltk.corpus import wordnet
+from nltk_data.corpora import wordnet
 from nltk.tokenize import TreebankWordTokenizer
 
 
