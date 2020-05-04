@@ -2,6 +2,7 @@ import config
 import random
 import json
 import re
+from nltk.corpus import wordnet
 
 
 data_path = config.basedir+"/data/"
@@ -92,3 +93,12 @@ def format_dates(hours_open):
        times = re.search("(?<=:).*", e).group().strip()
        new[day]=times
     return new
+
+def query_expansion(query):
+    synonyms = []
+    for word in query:
+        for syn in wordnet.synsets(word):
+            for l in syn.lemmas():
+                synonyms.append(l.name())
+        synonyms.append(word)
+    return set(synonyms)
