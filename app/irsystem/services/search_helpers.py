@@ -4,11 +4,11 @@ import json
 import re
 import nltk
 from nltk.tokenize import TreebankWordTokenizer
-from wn import WordNet
-from wn.info import WordNetInformationContent
-from wn.constants import wordnet_30_dir
-wordnet = WordNet(wordnet_30_dir)
-
+##from wn import WordNet
+##from wn.info import WordNetInformationContent
+##from wn.constants import wordnet_30_dir
+##wordnet = WordNet(wordnet_30_dir)
+from nltk.corpus import wordnet
 
 data_path = config.basedir+"/data/"
 
